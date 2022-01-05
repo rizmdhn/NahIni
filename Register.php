@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
             $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
             $result = mysqli_query($conn, $sql);
             if(!$result->num_rows>0){
-                $sql = "INSERT INTO user (email, password,nama, tanggal_lahir, no_telp, NIK)
+                $sql = "INSERT INTO user (email, password, nama, tanggal_lahir, no_telp, NIK)
                     VALUES ( '$email', '$password','$nama', '$tanggal_lahir', '$no_telp','$NIK')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
