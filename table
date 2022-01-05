@@ -1,0 +1,66 @@
+<html>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Warehouse</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Warehouse Stocks</div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>Desc</th>
+                                    <th>Qty</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                include 'koneksi.php';
+                                $no = 1;
+                                $data = mysqli_query($conn, "select * from hasil");
+                                while ($d = mysqli_fetch_array($data)) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $d['prod_ID']; ?></td>
+                                        <td><?php echo $d['prod_Name']; ?></td>
+                                        <td><?php echo $d['prod_Desc']; ?></td>
+                                        <td><?php echo $d['prod_Qty']; ?></td>
+                                        <td><?php echo $d['prod_Cost']; ?></td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-sm" onclick="location.href='goods_update.php?prod_ID=<?php echo $d['prod_ID']; ?>'">Edit</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="location.href='../conf/doDelete.php?prod_ID=<?php echo $d['prod_ID']; ?>'">Delete</button>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        <?php
+                                }
+                        ?>
+                        </table>
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+</html>
