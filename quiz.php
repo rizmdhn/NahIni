@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <style type="text/css">
-  @import url();
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
     nav {
    background-color: transparent;
    padding: 15px;
