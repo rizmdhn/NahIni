@@ -26,10 +26,10 @@ if (isset($_POST['submitlogin'])) {
     }
 }
 
-if (isset($_POST['submitregis'])) {
+if (isset($_POST['submit'])) {
     $username = $_POST['nama'];
-    $email = $_POST['email1'];
-    $password = md5($_POST['password1']);
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
     $tanggal_lahir = $_POST['tanggal_lahir'];
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
@@ -41,8 +41,8 @@ if (isset($_POST['submitregis'])) {
             $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
             $result = mysqli_query($conn, $sql);
             if(!$result->num_rows>0){
-                $sql = "INSERT INTO user (email, password,nama, tanggal_lahir, no_telp, NIK)
-                    VALUES ( '$email', '$password','$nama', '$tanggal_lahir', '$no_telp','$NIK')";
+                $sql = "INSERT INTO user (email1, password1,nama, tanggal_lahir, no_telp,alamat, NIK)
+                    VALUES ( '$email', '$password','$nama', '$tanggal_lahir', '$no_telp','$alamat','$NIK')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
