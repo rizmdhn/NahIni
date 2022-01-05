@@ -129,7 +129,13 @@ session_start();
 
 if (!isset($_SESSION['nama'])) {
   header("Location: login.php");
-} ?>
+} 
+if (!$_SESSION['credential'] == 1){
+  echo $_SESSION['credential'];
+  header("Location: home.php");
+}
+
+?>
 <?php
 function Logout()
 {
@@ -143,7 +149,6 @@ if (isset($_GET['logout'])) {
 }
 ?>
 
-?>
 <header>
   <script src="slide.js"></script>
   <nav>

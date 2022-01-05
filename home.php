@@ -128,22 +128,20 @@
 session_start();
 
 if (!isset($_SESSION['nama'])) {
-  header("Location: login.php");
+  header("Location: Signup.php");
 } ?>
 <?php
 function Logout()
 {
   session_start();
   session_destroy();
-
-  header("Location: login.php");
+  header("Location: Signup.php");
 }
 if (isset($_GET['logout'])) {
   Logout();
 }
 ?>
 
-?>
 <header>
   <script src="slide.js"></script>
   <nav>

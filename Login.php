@@ -19,10 +19,11 @@ if (isset($_POST['submit'])) {
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['nama'] = $row['nama'];
+        $_SESSION['credential'] = $row['credential'];
         header("Location: home.php");
     } else {
         echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
-        header("Location: home.php");
+        header("Location: Login.php");
     }
 }
  

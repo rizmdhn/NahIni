@@ -19,6 +19,7 @@ if (isset($_POST['submitlogin'])) {
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['nama'] = $row['nama'];
+		$_SESSION['credential'] = $row['credential'];
         header("Location: home.php");
     } else {
         echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
@@ -27,7 +28,7 @@ if (isset($_POST['submitlogin'])) {
 }
 
 if (isset($_POST['submitregis'])) {
-    $username = $_POST['nama'];
+    $nama = $_POST['nama'];
     $email1 = $_POST['email1'];
     $password1 = md5($_POST['password1']);
     $tanggal_lahir = $_POST['tanggal_lahir'];
@@ -41,14 +42,20 @@ if (isset($_POST['submitregis'])) {
             $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
             $result = mysqli_query($conn, $sql);
             if(!$result->num_rows>0){
-                $sql = "INSERT INTO user (email,password,nama, tanggal_lahir, no_telp, alamat, NIK)
+                $sql = "INSERT INTO user (email, password ,nama , tanggal_lahir, no_telp, alamat, NIK)
                     VALUES ( '$email1', '$password1','$nama', '$tanggal_lahir', '$no_telp','$alamat','$NIK')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
-                $username = "";
+                $nama = "";
                 $email1 = "";
+				$password1 = "";
+				$tanggal_lahir = "";
+				$no_telp = "";
+				$alamat = "";
+				$NIK =""; 
                 $_POST['password'] = "";
+
             } else {
                 echo  mysqli_error($conn) ;
                 echo "<script>alert('Terjadi Kesalahan')</script> ";
@@ -63,8 +70,6 @@ if (isset($_POST['submitregis'])) {
          
     
 }
- 
-?>
  
 ?>
 

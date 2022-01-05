@@ -104,7 +104,7 @@ footer {
            <li><a href="home.php">Home</a></li>
             <li><a href="prequiz.php">Test</a></li>
             <li><a href="">Hasil Test</a></li>
-             <li><a>Log Out</a></li>
+            <li><a href="home.php?logout=true">Log Out</a></li>
         </ul>
     </nav>
  	 </header>
