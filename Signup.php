@@ -28,8 +28,8 @@ if (isset($_POST['submitlogin'])) {
 
 if (isset($_POST['submitregis'])) {
     $username = $_POST['nama'];
-    $email1 = $_POST['email'];
-    $password1 = md5($_POST['password']);
+    $email1 = $_POST['email1'];
+    $password1 = md5($_POST['password1']);
     $tanggal_lahir = $_POST['tanggal_lahir'];
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
@@ -41,7 +41,7 @@ if (isset($_POST['submitregis'])) {
             $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
             $result = mysqli_query($conn, $sql);
             if(!$result->num_rows>0){
-                $sql = "INSERT INTO user (email1, password1,nama, tanggal_lahir, no_telp,alamat, NIK)
+                $sql = "INSERT INTO user (email,password,nama, tanggal_lahir, no_telp, alamat, NIK)
                     VALUES ( '$email1', '$password1','$nama', '$tanggal_lahir', '$no_telp','$alamat','$NIK')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
@@ -334,7 +334,7 @@ footer a {
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form method="post">
+		<form method="POST">
 			<h1>Create Account</h1>
 			
 
@@ -355,7 +355,6 @@ footer a {
 			
 			<input type="email" name="email"placeholder="Email" />
 			<input type="password" name="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
 			<button name="submitlogin">Sign In</button>
 		</form>
 	</div>
