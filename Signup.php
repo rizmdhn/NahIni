@@ -26,28 +26,28 @@ if (isset($_POST['submitlogin'])) {
     }
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitregis'])) {
     $username = $_POST['nama'];
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $email1 = $_POST['email'];
+    $password1 = md5($_POST['password']);
     $tanggal_lahir = $_POST['tanggal_lahir'];
     $no_telp = $_POST['no_telp'];
     $alamat = $_POST['alamat'];
     $NIK = $_POST['NIK'];
 
-        $sql = "SELECT * FROM user WHERE email='$email'";
+        $sql = "SELECT * FROM user WHERE email='$email1'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
             $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
             $result = mysqli_query($conn, $sql);
             if(!$result->num_rows>0){
                 $sql = "INSERT INTO user (email1, password1,nama, tanggal_lahir, no_telp,alamat, NIK)
-                    VALUES ( '$email', '$password','$nama', '$tanggal_lahir', '$no_telp','$alamat','$NIK')";
+                    VALUES ( '$email1', '$password1','$nama', '$tanggal_lahir', '$no_telp','$alamat','$NIK')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
                 $username = "";
-                $email = "";
+                $email1 = "";
                 $_POST['password'] = "";
             } else {
                 echo  mysqli_error($conn) ;
@@ -338,7 +338,7 @@ footer a {
 			<h1>Create Account</h1>
 			
 
-			<input type="text" name="nama1" placeholder="Name" />
+			<input type="text" name="nama" placeholder="Name" />
             <input type="number" name="NIK" placeholder="NIK" />
 			<input type="date" name="tanggal_lahir" placeholder="Birth Date" />
 			<input type="text" name="alamat" placeholder="Address" />
