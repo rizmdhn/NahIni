@@ -406,7 +406,7 @@ if (isset($_POST['submittest'])) {
     <div class="container mt-sm-5 my-1">
       <div class="question ml-sm-5 pl-sm-5 pt-2">
         <div class="py-2 h5">
-          <b>8. Apakah anda seorang fresh graduate?</b>
+          <b>8. Kemampuan menyelesaikan suatu masalah!?</b>
         </div>
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options" name="group-8">
           <label class="options">1
@@ -437,7 +437,7 @@ if (isset($_POST['submittest'])) {
     <div class="container mt-sm-5 my-1">
       <div class="question ml-sm-5 pl-sm-5 pt-2">
         <div class="py-2 h5">
-          <b>9. Apakah anda memiliki pengalaman pekerjaan sebelumnya?</b>
+          <b>9. Kemampuan dalam bekerja dibawah tekanan ?</b>
         </div>
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options" name="group-2">
           <label class="options">1
