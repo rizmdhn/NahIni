@@ -634,7 +634,7 @@ if (isset($_GET['logout'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Table D+ & D-</div>
+                            <div class="panel-heading">Table Vi</div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
 
