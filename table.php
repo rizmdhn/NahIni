@@ -201,15 +201,7 @@ if (!$_SESSION['credential'] == 1) {
                                         echo '<td>' . round($x8, 4) . '</td>';
                                         echo '<td>' . round($x9, 4) . '</td>';
                                         echo '</tr>';
-                                        $x1 = 0;
-                                        $x2 = 0;
-                                        $x3 = 0;
-                                        $x4 = 0;
-                                        $x5 = 0;
-                                        $x6 = 0;
-                                        $x7 = 0;
-                                        $x8 = 0;
-                                        $x9 = 0;
+ 
                                     }
                                     ?>
                                 </tbody>
@@ -233,44 +225,8 @@ if (!$_SESSION['credential'] == 1) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    include 'koneksi.php';
-                                    $c1 = array();
-                                    $c2 = array();
-                                    $c3 = array();
-                                    $c4 = array();
-                                    $c5 = array();
-                                    $c6 = array();
-                                    $c7 = array();
-                                    $c8 = array();
-                                    $c9 = array();
-                                    $datas = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
-                                    if (!$datas) {
-                                        printf("Error: %s\n", mysqli_error($conn));
-                                    }
-                                    while ($d = mysqli_fetch_array($datas)) {
-                                        $data = json_decode($d['array_jawaban']);
-                                        array_push($c1, $data[0]);
-                                        array_push($c2, $data[1]);
-                                        array_push($c3, $data[2]);
-                                        array_push($c4, $data[3]);
-                                        array_push($c5, $data[4]);
-                                        array_push($c6, $data[5]);
-                                        array_push($c7, $data[6]);
-                                        array_push($c8, $data[7]);
-                                        array_push($c9, $data[8]);
-                                    }
                                     // perhitungan normalisasi
                                     echo '<tr>';
-                                    $hasil1 = 0;
-                                    $hasil2 = 0;
-                                    $hasil3 = 0;
-                                    $hasil4 = 0;
-                                    $hasil5 = 0;
-                                    $hasil6 = 0;
-                                    $hasil7 = 0;
-                                    $hasil8 = 0;
-                                    $hasil9 = 0;
                                     $datax1 = array();
                                     $datax2 = array();
                                     $datax3 = array();
@@ -280,35 +236,8 @@ if (!$_SESSION['credential'] == 1) {
                                     $datax7 = array();
                                     $datax8 = array();
                                     $datax9 = array();
-                                    foreach ($c1 as $num) {
-                                        $hasil1 += $num * $num;
-                                    }
-                                    foreach ($c2 as $num) {
-                                        $hasil2 += $num * $num;
-                                    }
-                                    foreach ($c3 as $num) {
-                                        $hasil3 += $num * $num;
-                                    }
-                                    foreach ($c4 as $num) {
-                                        $hasil4 += $num * $num;
-                                    }
-                                    foreach ($c5 as $num) {
-                                        $hasil5 += $num * $num;
-                                    }
-                                    foreach ($c6 as $num) {
-                                        $hasil6 += $num * $num;
-                                    }
-                                    foreach ($c7 as $num) {
-                                        $hasil7 += $num * $num;
-                                    }
-                                    foreach ($c8 as $num) {
-                                        $hasil8 += $num * $num;
-                                    }
-                                    foreach ($c9 as $num) {
-                                        $hasil9 += $num * $num;
-                                    }
+                                   
                                     for ($x = 0; $x < sizeof($c1); $x++) {
-
                                         $x1 = $c1[$x] / sqrt($hasil1);
                                         $x2 = $c2[$x] / sqrt($hasil2);
                                         $x3 = $c3[$x] / sqrt($hasil3);
@@ -372,33 +301,6 @@ if (!$_SESSION['credential'] == 1) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    include 'koneksi.php';
-                                    $c1 = array();
-                                    $c2 = array();
-                                    $c3 = array();
-                                    $c4 = array();
-                                    $c5 = array();
-                                    $c6 = array();
-                                    $c7 = array();
-                                    $c8 = array();
-                                    $c9 = array();
-                                    $datas = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
-                                    if (!$datas) {
-                                        printf("Error: %s\n", mysqli_error($conn));
-                                    }
-                                    while ($d = mysqli_fetch_array($datas)) {
-                                        $data = json_decode($d['array_jawaban']);
-                                        array_push($c1, $data[0]);
-                                        array_push($c2, $data[1]);
-                                        array_push($c3, $data[2]);
-                                        array_push($c4, $data[3]);
-                                        array_push($c5, $data[4]);
-                                        array_push($c6, $data[5]);
-                                        array_push($c7, $data[6]);
-                                        array_push($c8, $data[7]);
-                                        array_push($c9, $data[8]);
-                                    }
                                     // perhitungan normalisasi
                                     echo '<tr>';
                                     echo '<td>' . round(max($datax1), 4) . '</td>';
@@ -423,17 +325,6 @@ if (!$_SESSION['credential'] == 1) {
                                     echo '<td>' . round(min($datax9), 4) . '</td>';
                                     echo '</tr>';
 
-                                    $xb1 = 0;
-                                    $xb2 = 0;
-                                    $xb3 = 0;
-                                    $xb4 = 0;
-                                    $xb5 = 0;
-                                    $xb6 = 0;
-                                    $xb7 = 0;
-                                    $xb8 = 0;
-                                    $xb9 = 0;
-
-                                    
 
                                     ?>
                                 </tbody>
@@ -443,8 +334,10 @@ if (!$_SESSION['credential'] == 1) {
                                 <h3>D+ D-</h3>
                                 <thead>
                                     <tr>
+                                        <th>Nama</th>
                                         <th>D+</th>
                                         <th>D-</th>
+                                        <th>Vi</th>
 
 
                                     </tr>
@@ -452,123 +345,52 @@ if (!$_SESSION['credential'] == 1) {
                                 <tbody>
                                     <?php
                                     include 'koneksi.php';
-                                    $c1 = array();
-                                    $c2 = array();
-                                    $c3 = array();
-                                    $c4 = array();
-                                    $c5 = array();
-                                    $c6 = array();
-                                    $c7 = array();
-                                    $c8 = array();
-                                    $c9 = array();
-                                    $datas = mysqli_query($conn, "select * from hasil 
+                                    $datanama = array();
+                                    $no = 1;
+                                    $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
+                                    $data = mysqli_query($conn, "select * from hasil 
                                     LEFT JOIN user ON hasil.user_id=user.user_id");
-                                    if (!$datas) {
+                                     // perhitungan normalisasi
+                                     if (!$data) {
                                         printf("Error: %s\n", mysqli_error($conn));
                                     }
-                                    while ($d = mysqli_fetch_array($datas)) {
-                                        $data = json_decode($d['array_jawaban']);
-                                        array_push($c1, $data[0]);
-                                        array_push($c2, $data[1]);
-                                        array_push($c3, $data[2]);
-                                        array_push($c4, $data[3]);
-                                        array_push($c5, $data[4]);
-                                        array_push($c6, $data[5]);
-                                        array_push($c7, $data[6]);
-                                        array_push($c8, $data[7]);
-                                        array_push($c9, $data[8]);
+                                    while ($d = mysqli_fetch_array($data)) {
+                                        array_push($datanama, $d['nama']);
                                     }
-                                    // perhitungan normalisasi
-                                    echo '<tr>';
-                                    $hasil1 = 0;
-                                    $hasil2 = 0;
-                                    $hasil3 = 0;
-                                    $hasil4 = 0;
-                                    $hasil5 = 0;
-                                    $hasil6 = 0;
-                                    $hasil7 = 0;
-                                    $hasil8 = 0;
-                                    $hasil9 = 0;
-
-                                    foreach ($c1 as $num) {
-                                        $hasil1 += $num * $num;
-                                    }
-                                    foreach ($c2 as $num) {
-                                        $hasil2 += $num * $num;
-                                    }
-                                    foreach ($c3 as $num) {
-                                        $hasil3 += $num * $num;
-                                    }
-                                    foreach ($c4 as $num) {
-                                        $hasil4 += $num * $num;
-                                    }
-                                    foreach ($c5 as $num) {
-                                        $hasil5 += $num * $num;
-                                    }
-                                    foreach ($c6 as $num) {
-                                        $hasil6 += $num * $num;
-                                    }
-                                    foreach ($c7 as $num) {
-                                        $hasil7 += $num * $num;
-                                    }
-                                    foreach ($c8 as $num) {
-                                        $hasil8 += $num * $num;
-                                    }
-                                    foreach ($c9 as $num) {
-                                        $hasil9 += $num * $num;
-                                    }
+                                    echo '<tr>';        
                                     for ($x = 0; $x < sizeof($c1); $x++) {
+                                        echo '<td>' . $datanama[$x] . '</td>';
 
-                                        $x1 = $c1[$x] / sqrt($hasil1);
-                                        $x2 = $c2[$x] / sqrt($hasil2);
-                                        $x3 = $c3[$x] / sqrt($hasil3);
-                                        $x4 = $c4[$x] / sqrt($hasil4);
-                                        $x5 = $c5[$x] / sqrt($hasil5);
-                                        $x6 = $c6[$x] / sqrt($hasil6);
-                                        $x7 = $c7[$x] / sqrt($hasil7);
-                                        $x8 = $c8[$x] / sqrt($hasil8);
-                                        $x9 = $c9[$x] / sqrt($hasil9);
-                                        $xb1 = $x1 * 5;
-                                        $xb2 = $x2 * 5;
-                                        $xb3 = $x3 * 3;
-                                        $xb4 = $x4 * 5;
-                                        $xb5 = $x5 * 3;
-                                        $xb6 = $x6 * 3;
-                                        $xb7 = $x7 * 3;
-                                        $xb8 = $x8 * 3;
-                                        $xb9 = $x9 * 3;
-
-
-
-
-                                        $dxc1=(max($datax1)-$datax1[0])*(max($datax1)-$datax1[0]);
-                                        $dxc2=(max($datax2)-$datax2[0])*(max($datax2)-$datax2[0]);
-                                        $dxc3=(max($datax3)-$datax3[0])*(max($datax3)-$datax3[0]);
-                                        $dxc4=(max($datax4)-$datax4[0])*(max($datax4)-$datax4[0]);
-                                        $dxc5=(max($datax5)-$datax5[0])*(max($datax5)-$datax5[0]);
-                                        $dxc6=(max($datax6)-$datax6[0])*(max($datax6)-$datax6[0]);
-                                        $dxc7=(max($datax7)-$datax7[0])*(max($datax7)-$datax7[0]);
-                                        $dxc8=(max($datax8)-$datax8[0])*(max($datax8)-$datax8[0]);
-                                        $dxc9=(max($datax9)-$datax9[0])*(max($datax9)-$datax9[0]);
+                                        $dxc1=(max($datax1)-$datax1[$x])*(max($datax1)-$datax1[$x]);
+                                        $dxc2=(max($datax2)-$datax2[$x])*(max($datax2)-$datax2[$x]);
+                                        $dxc3=(max($datax3)-$datax3[$x])*(max($datax3)-$datax3[$x]);
+                                        $dxc4=(max($datax4)-$datax4[$x])*(max($datax4)-$datax4[$x]);
+                                        $dxc5=(max($datax5)-$datax5[$x])*(max($datax5)-$datax5[$x]);
+                                        $dxc6=(max($datax6)-$datax6[$x])*(max($datax6)-$datax6[$x]);
+                                        $dxc7=(max($datax7)-$datax7[$x])*(max($datax7)-$datax7[$x]);
+                                        $dxc8=(max($datax8)-$datax8[$x])*(max($datax8)-$datax8[$x]);
+                                        $dxc9=(max($datax9)-$datax9[$x])*(max($datax9)-$datax9[$x]);
                                         $rdplus=sqrt($dxc1+$dxc2+$dxc3+$dxc4+$dxc5+$dxc6+$dxc7+$dxc8+$dxc9);
                                     echo '<td>' . round($rdplus, 4). '</td>';
-                                        $dxc1m=($datax1[0]-min($datax1))*($datax1[0]-min($datax1));
-                                        $dxc2m=($datax2[0]-min($datax2))*($datax2[0]-min($datax2));
-                                        $dxc3m=($datax3[0]-min($datax3))*($datax3[0]-min($datax3));
-                                        $dxc4m=($datax4[0]-min($datax4))*($datax4[0]-min($datax4));
-                                        $dxc5m=($datax5[0]-min($datax5))*($datax5[0]-min($datax5));
-                                        $dxc6m=($datax6[0]-min($datax6))*($datax6[0]-min($datax6));
-                                        $dxc7m=($datax7[0]-min($datax7))*($datax7[0]-min($datax7));
-                                        $dxc8m=($datax8[0]-min($datax8))*($datax8[0]-min($datax8));
-                                        $dxc9m=($datax9[0]-min($datax9))*($datax9[0]-min($datax9));
+                                        $dxc1m=($datax1[$x]-min($datax1))*($datax1[$x]-min($datax1));
+                                        $dxc2m=($datax2[$x]-min($datax2))*($datax2[$x]-min($datax2));
+                                        $dxc3m=($datax3[$x]-min($datax3))*($datax3[$x]-min($datax3));
+                                        $dxc4m=($datax4[$x]-min($datax4))*($datax4[$x]-min($datax4));
+                                        $dxc5m=($datax5[$x]-min($datax5))*($datax5[$x]-min($datax5));
+                                        $dxc6m=($datax6[$x]-min($datax6))*($datax6[$x]-min($datax6));
+                                        $dxc7m=($datax7[$x]-min($datax7))*($datax7[$x]-min($datax7));
+                                        $dxc8m=($datax8[$x]-min($datax8))*($datax8[$x]-min($datax8));
+                                        $dxc9m=($datax9[$x]-min($datax9))*($datax9[$x]-min($datax9));
                                         $rdmin=sqrt($dxc1m+$dxc2m+$dxc3m+$dxc4m+$dxc5m+$dxc6m+$dxc7m+$dxc8m+$dxc9m);
-                                    echo '<td>' . round($rdmin, 4). '</td>';
-
                                         $vi= $rdmin/($rdmin+$rdplus);
 
+                                        echo '<td>' . round($rdmin, 4). '</td>';
+                                    echo '<td>' . $vi . '</td>';
 
 
-                                  
+                                    
+                                    echo '</tr>';
+
                                     }
                                     ?>
                                 </tbody>
