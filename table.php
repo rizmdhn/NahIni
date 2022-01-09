@@ -305,7 +305,8 @@
                                         $xb7 = $x7*3;
                                         $xb8 = $x8*3;
                                         $xb9 = $x9*3;
-                                        $datax1 = array_fill($x,$x,$xb1);
+                                        $datax1 = array();
+
                                         
                                         array_push($datax1,$xb1);
 
