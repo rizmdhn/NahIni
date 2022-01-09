@@ -79,7 +79,7 @@ if (isset($_GET['logout'])) {
                             <a href="homepage-admin.php" class="active"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
                         </li>
                         <li>
-                            <a href="table-admin.php"><i class="fa fa-cube fa-fw"></i> Participant Table</a>
+                            <a href="table-admin.php"><i class="fa fa-database fa-fw"></i> Participant Data</a>
                         </li>
                     </ul>
                 </div>
@@ -98,7 +98,7 @@ if (isset($_GET['logout'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"> Participant Acceptance </div>
+                            <div class="panel-heading"></div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
 

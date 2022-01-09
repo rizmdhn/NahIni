@@ -81,7 +81,7 @@ if (isset($_GET['logout'])) {
                             <a href="homepage-admin.php"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
                         </li>
                         <li>
-                            <a href="table-admin.php" class="active"><i class="fa fa-cube fa-fw"></i> Participant Data</a>
+                            <a href="table-admin.php" class="active"><i class="fa fa-database fa-fw"></i> Participant Data</a>
                         </li>
                     </ul>
                 </div>
