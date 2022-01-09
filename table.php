@@ -1,5 +1,16 @@
 <html>
+<?php
 
+session_start();
+
+if (!isset($_SESSION['nama'])) {
+  header("Location: login.php");
+} 
+if (!$_SESSION['credential'] == 1){
+  echo $_SESSION['credential'];
+  header("Location: home.php");
+}
+?>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,6 +18,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    
     <title>NAHINI Warehouse</title>
 
     <!-- Bootstrap Core CSS -->
