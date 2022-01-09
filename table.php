@@ -324,8 +324,6 @@ if (!$_SESSION['credential'] == 1) {
                                     echo '<td>' . round(min($datax8), 4) . '</td>';
                                     echo '<td>' . round(min($datax9), 4) . '</td>';
                                     echo '</tr>';
-
-
                                     ?>
                                 </tbody>
                             </table>
