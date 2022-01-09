@@ -32,7 +32,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">NAHINI Warehouse</a>
+                <a class="navbar-brand" href="index.html">NAHINI Corp</a>
             </div>
 
             <ul class="nav navbar-right navbar-top-links">
