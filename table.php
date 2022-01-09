@@ -80,12 +80,8 @@
                                         }
                                     }
                                     ?>
-
-
-
                                     </tr>
                                 </tbody>
-
                             </table>
 
                             <table class="table table-striped table-bordered">
@@ -194,7 +190,7 @@
                                         echo '</tr>';
                                         $x1 = 0;
                                         $x2 = 0;
-                                        $x3  = 0;
+                                        $x3 = 0;
                                         $x4 = 0;
                                         $x5 = 0;
                                         $x6 = 0;
@@ -300,26 +296,139 @@
                                         $x7 = $c7[$x] / sqrt($hasil7);
                                         $x8 = $c8[$x] / sqrt($hasil8);
                                         $x9 = $c9[$x] / sqrt($hasil9);
+                                        $xb1 = $x1*5;
+                                        $xb2 = $x2*5;
+                                        $xb3 = $x3*3;
+                                        $xb4 = $x4*5;
+                                        $xb5 = $x5*3;
+                                        $xb6 = $x6*3;
+                                        $xb7 = $x7*3;
+                                        $xb8 = $x8*3;
+                                        $xb9 = $x9*3;
+                                        $datax1 = array();
+
+                                        
+                                        array_push($datax1,$xb1);
+
+
                                         echo '<td>' . round($x1, 4) * 5 . '</td>';
                                         echo '<td>' . round($x2, 4) * 5 . '</td>';
                                         echo '<td>' . round($x3, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x4, 4) . '</td>';
-                                        echo '<td>' . round($x5, 4) . '</td>';
-                                        echo '<td>' . round($x6, 4) . '</td>';
-                                        echo '<td>' . round($x7, 4) . '</td>';
-                                        echo '<td>' . round($x8, 4) . '</td>';
-                                        echo '<td>' . round($x9, 4) . '</td>';
+                                        echo '<td>' . round($x4, 4) * 5 . '</td>';
+                                        echo '<td>' . round($x5, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x6, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x7, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x8, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x9, 4) * 3 . '</td>';
                                         echo '</tr>';
                                         $x1 = 0;
                                         $x2 = 0;
-                                        $x3  = 0;
+                                        $x3 = 0;
                                         $x4 = 0;
                                         $x5 = 0;
                                         $x6 = 0;
                                         $x7 = 0;
                                         $x8 = 0;
                                         $x9 = 0;
+                                        
                                     }
+                                    ?>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped table-bordered">
+                                <h3>Tabel A+ & A-</h3>
+                                <thead>
+                                    <tr>
+                                        <th>C1</th>
+                                        <th>C2</th>
+                                        <th>C3</th>
+                                        <th>C4</th>
+                                        <th>C5</th>
+                                        <th>C6</th>
+                                        <th>C7</th>
+                                        <th>C8</th>
+                                        <th>C9</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include 'koneksi.php';
+                                    $c1 = array();
+                                    $c2 = array();
+                                    $c3 = array();
+                                    $c4 = array();
+                                    $c5 = array();
+                                    $c6 = array();
+                                    $c7 = array();
+                                    $c8 = array();
+                                    $c9 = array();
+                                    $datas = mysqli_query($conn, "select * from hasil 
+                                    LEFT JOIN user ON hasil.user_id=user.user_id");
+                                    if (!$datas) {
+                                        printf("Error: %s\n", mysqli_error($conn));
+                                    }
+                                    while ($d = mysqli_fetch_array($datas)) {
+                                        $data = json_decode($d['array_jawaban']);
+                                        array_push($c1, $data[0]);
+                                        array_push($c2, $data[1]);
+                                        array_push($c3, $data[2]);
+                                        array_push($c4, $data[3]);
+                                        array_push($c5, $data[4]);
+                                        array_push($c6, $data[5]);
+                                        array_push($c7, $data[6]);
+                                        array_push($c8, $data[7]);
+                                        array_push($c9, $data[8]);
+                                    }
+                                    // perhitungan normalisasi
+                                    echo '<tr>';
+                                    $hasil1 = 0;
+                                    $hasil2 = 0;
+                                    $hasil3 = 0;
+                                    $hasil4 = 0;
+                                    $hasil5 = 0;
+                                    $hasil6 = 0;
+                                    $hasil7 = 0;
+                                    $hasil8 = 0;
+                                    $hasil9 = 0;
+                                    foreach ($c1 as $num) {
+                                        $hasil1 += $num * $num;
+                                    }
+                                    foreach ($c2 as $num) {
+                                        $hasil2 += $num * $num;
+                                    }
+                                    foreach ($c3 as $num) {
+                                        $hasil3 += $num * $num;
+                                    }
+                                    foreach ($c4 as $num) {
+                                        $hasil4 += $num * $num;
+                                    }
+                                    foreach ($c5 as $num) {
+                                        $hasil5 += $num * $num;
+                                    }
+                                    foreach ($c6 as $num) {
+                                        $hasil6 += $num * $num;
+                                    }
+                                    foreach ($c7 as $num) {
+                                        $hasil7 += $num * $num;
+                                    }
+                                    foreach ($c8 as $num) {
+                                        $hasil8 += $num * $num;
+                                    }
+                                    foreach ($c9 as $num) {
+                                        $hasil9 += $num * $num;
+                                    }
+                                    
+
+                                    
+                                        
+
+                                        echo '<td>' . max($datax1). '</td>';
+   
+                                        echo '</tr>';
+                                       
+                                    
                                     ?>
                                 </tbody>
                             </table>
