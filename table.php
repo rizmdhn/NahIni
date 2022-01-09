@@ -47,13 +47,57 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
+                                        <th>Nama</th>
+                                        <th>C1</th>
+                                        <th>C2</th>
+                                        <th>C3</th>
+                                        <th>C4</th>
+                                        <th>C5</th>
+                                        <th>C6</th>
+                                        <th>C7</th>
+                                        <th>C8</th>
+                                        <th>C9</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include 'koneksi.php';
+                                    $no = 1;
+                                    $datas = mysqli_query($conn, "select * from hasil 
+                                    LEFT JOIN user ON hasil.user_id=user.user_id");
+                                    if (!$datas) {
+                                        printf("Error: %s\n", mysqli_error($conn));
+                                    }
+                                    while ($d = mysqli_fetch_array($datas)) {
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $no++; ?></td>
+                                            <td><?php echo $d['nama']; ?></td>
+                                            <?php
+                                            $data = json_decode($d['array_jawaban']);
+                                            foreach ($data as $dat) {
+                                                echo "<td>" . $dat . "</td>";
+                                            }
+
+                                            ?>
+
+                                        </tr>
+                                </tbody>
+                            <?php
+                                    }
+                            ?>
+                            </table>
+
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
                                         <th>Hasil ID</th>
                                         <th>Nama</th>
                                         <th>Hasil VI</th>
                                         <th>Status</th>
                                         <th>Jawaban</th>
-
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,7 +119,6 @@
                                             <td><?php echo $d['nama']; ?></td>
                                             <td><?php echo $d['Vi']; ?></td>
                                             <td><?php echo $d['hasil']; ?></td>
-                                            <td><?php echo $d['array_jawaban']; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm" onclick="">Terima</button>
                                                 <button type="button" class="btn btn-danger btn-sm" onclick="">Tolak</button>
