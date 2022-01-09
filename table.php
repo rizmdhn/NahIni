@@ -438,6 +438,119 @@ if (!$_SESSION['credential'] == 1){
                             </table>
 
                             <table class="table table-striped table-bordered">
+                                <h3>Tabel Ternormalisasi Bobot</h3>
+                                <thead>
+                                    <tr>
+                                        <th>D+</th>
+                                        <th>D-</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include 'koneksi.php';
+                                    $c1 = array();
+                                    $c2 = array();
+                                    $c3 = array();
+                                    $c4 = array();
+                                    $c5 = array();
+                                    $c6 = array();
+                                    $c7 = array();
+                                    $c8 = array();
+                                    $c9 = array();
+                                    $datas = mysqli_query($conn, "select * from hasil 
+                                    LEFT JOIN user ON hasil.user_id=user.user_id");
+                                    if (!$datas) {
+                                        printf("Error: %s\n", mysqli_error($conn));
+                                    }
+                                    while ($d = mysqli_fetch_array($datas)) {
+                                        $data = json_decode($d['array_jawaban']);
+                                        array_push($c1, $data[0]);
+                                        array_push($c2, $data[1]);
+                                        array_push($c3, $data[2]);
+                                        array_push($c4, $data[3]);
+                                        array_push($c5, $data[4]);
+                                        array_push($c6, $data[5]);
+                                        array_push($c7, $data[6]);
+                                        array_push($c8, $data[7]);
+                                        array_push($c9, $data[8]);
+                                    }
+                                    // perhitungan normalisasi
+                                    echo '<tr>';
+                                    $hasil1 = 0;
+                                    $hasil2 = 0;
+                                    $hasil3 = 0;
+                                    $hasil4 = 0;
+                                    $hasil5 = 0;
+                                    $hasil6 = 0;
+                                    $hasil7 = 0;
+                                    $hasil8 = 0;
+                                    $hasil9 = 0;
+
+                                    foreach ($c1 as $num) {
+                                        $hasil1 += $num * $num;
+                                    }
+                                    foreach ($c2 as $num) {
+                                        $hasil2 += $num * $num;
+                                    }
+                                    foreach ($c3 as $num) {
+                                        $hasil3 += $num * $num;
+                                    }
+                                    foreach ($c4 as $num) {
+                                        $hasil4 += $num * $num;
+                                    }
+                                    foreach ($c5 as $num) {
+                                        $hasil5 += $num * $num;
+                                    }
+                                    foreach ($c6 as $num) {
+                                        $hasil6 += $num * $num;
+                                    }
+                                    foreach ($c7 as $num) {
+                                        $hasil7 += $num * $num;
+                                    }
+                                    foreach ($c8 as $num) {
+                                        $hasil8 += $num * $num;
+                                    }
+                                    foreach ($c9 as $num) {
+                                        $hasil9 += $num * $num;
+                                    }
+                                    for ($x = 0; $x < sizeof($c1); $x++) {
+
+                                        $x1 = $c1[$x] / sqrt($hasil1);
+                                        $x2 = $c2[$x] / sqrt($hasil2);
+                                        $x3 = $c3[$x] / sqrt($hasil3);
+                                        $x4 = $c4[$x] / sqrt($hasil4);
+                                        $x5 = $c5[$x] / sqrt($hasil5);
+                                        $x6 = $c6[$x] / sqrt($hasil6);
+                                        $x7 = $c7[$x] / sqrt($hasil7);
+                                        $x8 = $c8[$x] / sqrt($hasil8);
+                                        $x9 = $c9[$x] / sqrt($hasil9);
+                                        $xb1 = $x1*5;
+                                        $xb2 = $x2*5;
+                                        $xb3 = $x3*3;
+                                        $xb4 = $x4*5;
+                                        $xb5 = $x5*3;
+                                        $xb6 = $x6*3;
+                                        $xb7 = $x7*3;
+                                        $xb8 = $x8*3;
+                                        $xb9 = $x9*3;
+
+
+
+
+                                        $dx1=(max($datax1)-$datax1[0])*(max($datax1)-$datax1[0]);
+                                    echo '<td>' . round($dx1, 4). '</td>';
+                                    echo '<td>' . round($dx1, 4). '</td>';
+
+
+                                  
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
