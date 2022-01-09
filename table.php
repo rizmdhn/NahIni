@@ -433,7 +433,7 @@ if (!$_SESSION['credential'] == 1) {
                                     $xb8 = 0;
                                     $xb9 = 0;
 
-                                    
+
 
                                     ?>
                                 </tbody>
@@ -541,34 +541,33 @@ if (!$_SESSION['credential'] == 1) {
 
 
 
-                                        $dxc1=(max($datax1)-$datax1[0])*(max($datax1)-$datax1[0]);
-                                        $dxc2=(max($datax2)-$datax2[0])*(max($datax2)-$datax2[0]);
-                                        $dxc3=(max($datax3)-$datax3[0])*(max($datax3)-$datax3[0]);
-                                        $dxc4=(max($datax4)-$datax4[0])*(max($datax4)-$datax4[0]);
-                                        $dxc5=(max($datax5)-$datax5[0])*(max($datax5)-$datax5[0]);
-                                        $dxc6=(max($datax6)-$datax6[0])*(max($datax6)-$datax6[0]);
-                                        $dxc7=(max($datax7)-$datax7[0])*(max($datax7)-$datax7[0]);
-                                        $dxc8=(max($datax8)-$datax8[0])*(max($datax8)-$datax8[0]);
-                                        $dxc9=(max($datax9)-$datax9[0])*(max($datax9)-$datax9[0]);
-                                        $rdplus=sqrt($dxc1+$dxc2+$dxc3+$dxc4+$dxc5+$dxc6+$dxc7+$dxc8+$dxc9);
-                                    echo '<td>' . round($rdplus, 4). '</td>';
-                                        $dxc1m=($datax1[0]-min($datax1))*($datax1[0]-min($datax1));
-                                        $dxc2m=($datax2[0]-min($datax2))*($datax2[0]-min($datax2));
-                                        $dxc3m=($datax3[0]-min($datax3))*($datax3[0]-min($datax3));
-                                        $dxc4m=($datax4[0]-min($datax4))*($datax4[0]-min($datax4));
-                                        $dxc5m=($datax5[0]-min($datax5))*($datax5[0]-min($datax5));
-                                        $dxc6m=($datax6[0]-min($datax6))*($datax6[0]-min($datax6));
-                                        $dxc7m=($datax7[0]-min($datax7))*($datax7[0]-min($datax7));
-                                        $dxc8m=($datax8[0]-min($datax8))*($datax8[0]-min($datax8));
-                                        $dxc9m=($datax9[0]-min($datax9))*($datax9[0]-min($datax9));
-                                        $rdmin=sqrt($dxc1m+$dxc2m+$dxc3m+$dxc4m+$dxc5m+$dxc6m+$dxc7m+$dxc8m+$dxc9m);
-                                    echo '<td>' . round($rdmin, 4). '</td>';
+                                        $dxc1 = (max($datax1) - $datax1[0]) * (max($datax1) - $datax1[0]);
+                                        $dxc2 = (max($datax2) - $datax2[0]) * (max($datax2) - $datax2[0]);
+                                        $dxc3 = (max($datax3) - $datax3[0]) * (max($datax3) - $datax3[0]);
+                                        $dxc4 = (max($datax4) - $datax4[0]) * (max($datax4) - $datax4[0]);
+                                        $dxc5 = (max($datax5) - $datax5[0]) * (max($datax5) - $datax5[0]);
+                                        $dxc6 = (max($datax6) - $datax6[0]) * (max($datax6) - $datax6[0]);
+                                        $dxc7 = (max($datax7) - $datax7[0]) * (max($datax7) - $datax7[0]);
+                                        $dxc8 = (max($datax8) - $datax8[0]) * (max($datax8) - $datax8[0]);
+                                        $dxc9 = (max($datax9) - $datax9[0]) * (max($datax9) - $datax9[0]);
+                                        $rdplus = sqrt($dxc1 + $dxc2 + $dxc3 + $dxc4 + $dxc5 + $dxc6 + $dxc7 + $dxc8 + $dxc9);
 
-                                        $vi= $rdmin/($rdmin+$rdplus);
+                                        $dxc1m = ($datax1[0] - min($datax1)) * ($datax1[0] - min($datax1));
+                                        $dxc2m = ($datax2[0] - min($datax2)) * ($datax2[0] - min($datax2));
+                                        $dxc3m = ($datax3[0] - min($datax3)) * ($datax3[0] - min($datax3));
+                                        $dxc4m = ($datax4[0] - min($datax4)) * ($datax4[0] - min($datax4));
+                                        $dxc5m = ($datax5[0] - min($datax5)) * ($datax5[0] - min($datax5));
+                                        $dxc6m = ($datax6[0] - min($datax6)) * ($datax6[0] - min($datax6));
+                                        $dxc7m = ($datax7[0] - min($datax7)) * ($datax7[0] - min($datax7));
+                                        $dxc8m = ($datax8[0] - min($datax8)) * ($datax8[0] - min($datax8));
+                                        $dxc9m = ($datax9[0] - min($datax9)) * ($datax9[0] - min($datax9));
+                                        $rdmin = sqrt($dxc1m + $dxc2m + $dxc3m + $dxc4m + $dxc5m + $dxc6m + $dxc7m + $dxc8m + $dxc9m);
+                                        echo '<tr>';
+                                        echo '<td>' . round($rdplus, 4) .  '</td>';
+                                        echo '<td>' . round($rdmin, 4) . '</td>';
+                                        echo '</tr>';
 
-
-
-                                  
+                                        $vi = $rdmin / ($rdmin + $rdplus);
                                     }
                                     ?>
                                 </tbody>
