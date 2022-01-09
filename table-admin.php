@@ -81,7 +81,7 @@ if (isset($_GET['logout'])) {
                             <a href="homepage-admin.php"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
                         </li>
                         <li>
-                            <a href="table-admin.php" class="active"><i class="fa fa-database fa-fw"></i> Participant Data</a>
+                            <a href="table-admin.php" class="active"><i class="fa fa-cube fa-fw"></i> Participant Data</a>
                         </li>
                     </ul>
                 </div>
@@ -96,11 +96,11 @@ if (isset($_GET['logout'])) {
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
+                <!-- /.Data Peserta -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"></div>
+                            <div class="panel-heading">Data Peserta</div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <table class="table table-striped table-bordered">
@@ -144,8 +144,22 @@ if (isset($_GET['logout'])) {
                                     </tbody>
                                 </table>
 
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.Ternormalisasi -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Data Peserta Ternormalisasi </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
                                 <table class="table table-striped table-bordered">
-                                    <h3>Tabel Ternormalisasi</h3>
                                     <thead>
                                         <tr>
                                             <th>C1</th>
@@ -262,8 +276,22 @@ if (isset($_GET['logout'])) {
                                     </tbody>
                                 </table>
 
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.terbobot -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Data Peserta Ternormalisasi Bobot</div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
                                 <table class="table table-striped table-bordered">
-                                    <h3>Tabel Ternormalisasi Bobot</h3>
                                     <thead>
                                         <tr>
                                             <th>C1</th>
@@ -401,8 +429,22 @@ if (isset($_GET['logout'])) {
                                     </tbody>
                                 </table>
 
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.a+ a- -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Table A+ & A-</div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
                                 <table class="table table-striped table-bordered">
-                                    <h3>Tabel A+ & A-</h3>
                                     <thead>
                                         <tr>
                                             <th>C1</th>
@@ -491,8 +533,204 @@ if (isset($_GET['logout'])) {
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+                <!-- /.d+ d- -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Table D+ & D-</div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>D+</th>
+                                            <th>D-</th>
+                                            <th>C3</th>
+                                            <th>C4</th>
+                                            <th>C5</th>
+                                            <th>C6</th>
+                                            <th>C7</th>
+                                            <th>C8</th>
+                                            <th>C9</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        include 'koneksi.php';
+                                        $c1 = array();
+                                        $c2 = array();
+                                        $c3 = array();
+                                        $c4 = array();
+                                        $c5 = array();
+                                        $c6 = array();
+                                        $c7 = array();
+                                        $c8 = array();
+                                        $c9 = array();
+                                        $datas = mysqli_query($conn, "select * from hasil 
+                                    LEFT JOIN user ON hasil.user_id=user.user_id");
+                                        if (!$datas) {
+                                            printf("Error: %s\n", mysqli_error($conn));
+                                        }
+                                        while ($d = mysqli_fetch_array($datas)) {
+                                            $data = json_decode($d['array_jawaban']);
+                                            array_push($c1, $data[0]);
+                                            array_push($c2, $data[1]);
+                                            array_push($c3, $data[2]);
+                                            array_push($c4, $data[3]);
+                                            array_push($c5, $data[4]);
+                                            array_push($c6, $data[5]);
+                                            array_push($c7, $data[6]);
+                                            array_push($c8, $data[7]);
+                                            array_push($c9, $data[8]);
+                                        }
+                                        // perhitungan normalisasi
+                                        echo '<tr>';
+                                        echo '<td>' . round(max($datax1), 4) . '</td>';
+                                        echo '<td>' . round(max($datax2), 4) . '</td>';
+                                        echo '<td>' . round(max($datax3), 4) . '</td>';
+                                        echo '<td>' . round(max($datax4), 4) . '</td>';
+                                        echo '<td>' . round(max($datax5), 4) . '</td>';
+                                        echo '<td>' . round(max($datax6), 4) . '</td>';
+                                        echo '<td>' . round(max($datax7), 4) . '</td>';
+                                        echo '<td>' . round(max($datax8), 4) . '</td>';
+                                        echo '<td>' . round(max($datax9), 4) . '</td>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo '<td>' . round(min($datax1), 4) . '</td>';
+                                        echo '<td>' . round(min($datax2), 4) . '</td>';
+                                        echo '<td>' . round(min($datax3), 4) . '</td>';
+                                        echo '<td>' . round(min($datax4), 4) . '</td>';
+                                        echo '<td>' . round(min($datax5), 4) . '</td>';
+                                        echo '<td>' . round(min($datax6), 4) . '</td>';
+                                        echo '<td>' . round(min($datax7), 4) . '</td>';
+                                        echo '<td>' . round(min($datax8), 4) . '</td>';
+                                        echo '<td>' . round(min($datax9), 4) . '</td>';
+                                        echo '</tr>';
+
+                                        $xb1 = 0;
+                                        $xb2 = 0;
+                                        $xb3 = 0;
+                                        $xb4 = 0;
+                                        $xb5 = 0;
+                                        $xb6 = 0;
+                                        $xb7 = 0;
+                                        $xb8 = 0;
+                                        $xb9 = 0;
+
+                                        ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.vi -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Table D+ & D-</div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>D+</th>
+                                            <th>D-</th>
+                                            <th>C3</th>
+                                            <th>C4</th>
+                                            <th>C5</th>
+                                            <th>C6</th>
+                                            <th>C7</th>
+                                            <th>C8</th>
+                                            <th>C9</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        include 'koneksi.php';
+                                        $c1 = array();
+                                        $c2 = array();
+                                        $c3 = array();
+                                        $c4 = array();
+                                        $c5 = array();
+                                        $c6 = array();
+                                        $c7 = array();
+                                        $c8 = array();
+                                        $c9 = array();
+                                        $datas = mysqli_query($conn, "select * from hasil 
+                                    LEFT JOIN user ON hasil.user_id=user.user_id");
+                                        if (!$datas) {
+                                            printf("Error: %s\n", mysqli_error($conn));
+                                        }
+                                        while ($d = mysqli_fetch_array($datas)) {
+                                            $data = json_decode($d['array_jawaban']);
+                                            array_push($c1, $data[0]);
+                                            array_push($c2, $data[1]);
+                                            array_push($c3, $data[2]);
+                                            array_push($c4, $data[3]);
+                                            array_push($c5, $data[4]);
+                                            array_push($c6, $data[5]);
+                                            array_push($c7, $data[6]);
+                                            array_push($c8, $data[7]);
+                                            array_push($c9, $data[8]);
+                                        }
+                                        // perhitungan normalisasi
+                                        echo '<tr>';
+                                        echo '<td>' . round(max($datax1), 4) . '</td>';
+                                        echo '<td>' . round(max($datax2), 4) . '</td>';
+                                        echo '<td>' . round(max($datax3), 4) . '</td>';
+                                        echo '<td>' . round(max($datax4), 4) . '</td>';
+                                        echo '<td>' . round(max($datax5), 4) . '</td>';
+                                        echo '<td>' . round(max($datax6), 4) . '</td>';
+                                        echo '<td>' . round(max($datax7), 4) . '</td>';
+                                        echo '<td>' . round(max($datax8), 4) . '</td>';
+                                        echo '<td>' . round(max($datax9), 4) . '</td>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo '<td>' . round(min($datax1), 4) . '</td>';
+                                        echo '<td>' . round(min($datax2), 4) . '</td>';
+                                        echo '<td>' . round(min($datax3), 4) . '</td>';
+                                        echo '<td>' . round(min($datax4), 4) . '</td>';
+                                        echo '<td>' . round(min($datax5), 4) . '</td>';
+                                        echo '<td>' . round(min($datax6), 4) . '</td>';
+                                        echo '<td>' . round(min($datax7), 4) . '</td>';
+                                        echo '<td>' . round(min($datax8), 4) . '</td>';
+                                        echo '<td>' . round(min($datax9), 4) . '</td>';
+                                        echo '</tr>';
+
+                                        $xb1 = 0;
+                                        $xb2 = 0;
+                                        $xb3 = 0;
+                                        $xb4 = 0;
+                                        $xb5 = 0;
+                                        $xb6 = 0;
+                                        $xb7 = 0;
+                                        $xb8 = 0;
+                                        $xb9 = 0;
+
+                                        ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
                 <!-- /.row -->
+
             </div>
+
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->

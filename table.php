@@ -20,7 +20,7 @@ if (!$_SESSION['credential'] == 1) {
     <meta name="author" content="" />
 
 
-    <title>NAHINI Warehouse</title>
+    <title>NAHINI Corp</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -528,15 +528,15 @@ if (!$_SESSION['credential'] == 1) {
                                         $x7 = $c7[$x] / sqrt($hasil7);
                                         $x8 = $c8[$x] / sqrt($hasil8);
                                         $x9 = $c9[$x] / sqrt($hasil9);
-                                        $xb1 = $x1*5;
-                                        $xb2 = $x2*5;
-                                        $xb3 = $x3*3;
-                                        $xb4 = $x4*5;
-                                        $xb5 = $x5*3;
-                                        $xb6 = $x6*3;
-                                        $xb7 = $x7*3;
-                                        $xb8 = $x8*3;
-                                        $xb9 = $x9*3;
+                                        $xb1 = $x1 * 5;
+                                        $xb2 = $x2 * 5;
+                                        $xb3 = $x3 * 3;
+                                        $xb4 = $x4 * 5;
+                                        $xb5 = $x5 * 3;
+                                        $xb6 = $x6 * 3;
+                                        $xb7 = $x7 * 3;
+                                        $xb8 = $x8 * 3;
+                                        $xb9 = $x9 * 3;
 
 
 
