@@ -258,6 +258,15 @@
                                     $hasil7 = 0;
                                     $hasil8 = 0;
                                     $hasil9 = 0;
+                                    $datax1 = array();
+                                    $datax2 = array();
+                                    $datax3 = array();
+                                    $datax4 = array();
+                                    $datax5 = array();
+                                    $datax6 = array();
+                                    $datax7 = array();
+                                    $datax8 = array();
+                                    $datax9 = array();
                                     foreach ($c1 as $num) {
                                         $hasil1 += $num * $num;
                                     }
@@ -305,32 +314,29 @@
                                         $xb7 = $x7*3;
                                         $xb8 = $x8*3;
                                         $xb9 = $x9*3;
-                                        $datax1 = array();
-
-                                        
                                         array_push($datax1,$xb1);
+                                        array_push($datax2,$xb2);
+                                        array_push($datax3,$xb3);
+                                        array_push($datax4,$xb4);
+                                        array_push($datax5,$xb5);
+                                        array_push($datax6,$xb6);
+                                        array_push($datax7,$xb7);
+                                        array_push($datax8,$xb8);
+                                        array_push($datax9,$xb9);
 
 
-                                        echo '<td>' . round($x1, 4) * 5 . '</td>';
-                                        echo '<td>' . round($x2, 4) * 5 . '</td>';
-                                        echo '<td>' . round($x3, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x4, 4) * 5 . '</td>';
-                                        echo '<td>' . round($x5, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x6, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x7, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x8, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x9, 4) * 3 . '</td>';
+
+                                        echo '<td>' . round($xb1, 4)  . '</td>';
+                                        echo '<td>' . round($xb2, 4)  . '</td>';
+                                        echo '<td>' . round($xb3, 4)  . '</td>';
+                                        echo '<td>' . round($xb4, 4)  . '</td>';
+                                        echo '<td>' . round($xb5, 4)  . '</td>';
+                                        echo '<td>' . round($xb6, 4)  . '</td>';
+                                        echo '<td>' . round($xb7, 4)  . '</td>';
+                                        echo '<td>' . round($xb8, 4)  . '</td>';
+                                        echo '<td>' . round($xb9, 4)  . '</td>';
                                         echo '</tr>';
-                                        $x1 = 0;
-                                        $x2 = 0;
-                                        $x3 = 0;
-                                        $x4 = 0;
-                                        $x5 = 0;
-                                        $x6 = 0;
-                                        $x7 = 0;
-                                        $x8 = 0;
-                                        $x9 = 0;
-                                        
+                                  
                                     }
                                     ?>
                                 </tbody>
@@ -382,52 +388,38 @@
                                         array_push($c9, $data[8]);
                                     }
                                     // perhitungan normalisasi
-                                    echo '<tr>';
-                                    $hasil1 = 0;
-                                    $hasil2 = 0;
-                                    $hasil3 = 0;
-                                    $hasil4 = 0;
-                                    $hasil5 = 0;
-                                    $hasil6 = 0;
-                                    $hasil7 = 0;
-                                    $hasil8 = 0;
-                                    $hasil9 = 0;
-                                    foreach ($c1 as $num) {
-                                        $hasil1 += $num * $num;
-                                    }
-                                    foreach ($c2 as $num) {
-                                        $hasil2 += $num * $num;
-                                    }
-                                    foreach ($c3 as $num) {
-                                        $hasil3 += $num * $num;
-                                    }
-                                    foreach ($c4 as $num) {
-                                        $hasil4 += $num * $num;
-                                    }
-                                    foreach ($c5 as $num) {
-                                        $hasil5 += $num * $num;
-                                    }
-                                    foreach ($c6 as $num) {
-                                        $hasil6 += $num * $num;
-                                    }
-                                    foreach ($c7 as $num) {
-                                        $hasil7 += $num * $num;
-                                    }
-                                    foreach ($c8 as $num) {
-                                        $hasil8 += $num * $num;
-                                    }
-                                    foreach ($c9 as $num) {
-                                        $hasil9 += $num * $num;
-                                    }
-                                    
-
-                                    
-                                        
-
-                                        echo '<td>' . max($datax1). '</td>';
-   
+                                        echo '<tr>';                                        
+                                        echo '<td>' . round(max($datax1), 4). '</td>';
+                                        echo '<td>' . round(max($datax2), 4). '</td>';
+                                        echo '<td>' . round(max($datax3), 4). '</td>';
+                                        echo '<td>' . round(max($datax4), 4). '</td>';
+                                        echo '<td>' . round(max($datax5), 4). '</td>';
+                                        echo '<td>' . round(max($datax6), 4). '</td>';
+                                        echo '<td>' . round(max($datax7), 4). '</td>';
+                                        echo '<td>' . round(max($datax8), 4). '</td>';
+                                        echo '<td>' . round(max($datax9), 4). '</td>';
                                         echo '</tr>';
-                                       
+                                        echo '<tr>';
+                                        echo '<td>' . round(min($datax1), 4). '</td>';
+                                        echo '<td>' . round(min($datax2), 4). '</td>';
+                                        echo '<td>' . round(min($datax3), 4). '</td>';
+                                        echo '<td>' . round(min($datax4), 4). '</td>';
+                                        echo '<td>' . round(min($datax5), 4). '</td>';
+                                        echo '<td>' . round(min($datax6), 4). '</td>';
+                                        echo '<td>' . round(min($datax7), 4). '</td>';
+                                        echo '<td>' . round(min($datax8), 4). '</td>';
+                                        echo '<td>' . round(min($datax9), 4). '</td>';
+                                        echo '</tr>';
+
+                                        $xb1 = 0;
+                                        $xb2 = 0;
+                                        $xb3 = 0;
+                                        $xb4 = 0;
+                                        $xb5 = 0;
+                                        $xb6 = 0;
+                                        $xb7 = 0;
+                                        $xb8 = 0;
+                                        $xb9 = 0;
                                     
                                     ?>
                                 </tbody>
