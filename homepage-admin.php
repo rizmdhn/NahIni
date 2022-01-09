@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+
+if (!isset($_SESSION['nama'])) {
+    header("Location: login.php");
+}
+if (!$_SESSION['credential'] == 1) {
+    echo $_SESSION['credential'];
+    header("Location: home.php");
+}
+if (!isset($_SESSION['nama'])) {
+    header("Location: Signup.php");
+}
+function Logout()
+{
+    session_start();
+    session_destroy();
+    header("Location: Signup.php");
+}
+if (isset($_GET['logout'])) {
+    Logout();
+}
+?>
 
 <head>
     <meta charset="utf-8" />
@@ -38,11 +61,11 @@
             <ul class="nav navbar-right navbar-top-links">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <b class="caret"></b>
+                        <i class="fa fa-user fa-fw"></i> Admin <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="home.php?logout=true"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -56,7 +79,7 @@
                             <a href="homepage-admin.php" class="active"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
                         </li>
                         <li>
-                            <a href="a.php"><i class="fa fa-cube fa-fw"></i> Participant Table</a>
+                            <a href="table-admin.php"><i class="fa fa-cube fa-fw"></i> Participant Table</a>
                         </li>
                     </ul>
                 </div>
@@ -67,7 +90,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Participant Data</h1>
+                        <h1 class="page-header">Selamat Datang, Admin!</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -75,7 +98,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"></div>
+                            <div class="panel-heading"> Participant Acceptance </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
 

@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+
+session_start();
+
+if (!isset($_SESSION['nama'])) {
+    header("Location: login.php");
+}
+if (!$_SESSION['credential'] == 1) {
+    echo $_SESSION['credential'];
+    header("Location: home.php");
+}
+if (!isset($_SESSION['nama'])) {
+    header("Location: Signup.php");
+}
+function Logout()
+{
+    session_start();
+    session_destroy();
+    header("Location: Signup.php");
+}
+if (isset($_GET['logout'])) {
+    Logout();
+}
+?>
+
 
 <head>
     <meta charset="utf-8" />
@@ -38,11 +63,11 @@
             <ul class="nav navbar-right navbar-top-links">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <b class="caret"></b>
+                        <i class="fa fa-user fa-fw"></i> Admin <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="home.php?logout=true"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -53,10 +78,10 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="homepage-admin.php" class="active"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
+                            <a href="homepage-admin.php"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
                         </li>
                         <li>
-                            <a href="a.php"><i class="fa fa-cube fa-fw"></i> Participant Table</a>
+                            <a href="table-admin.php" class="active"><i class="fa fa-cube fa-fw"></i> Participant Data</a>
                         </li>
                     </ul>
                 </div>
@@ -67,7 +92,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Participant Data</h1>
+                        <h1 class="page-header">Participant Data Table</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -78,7 +103,6 @@
                             <div class="panel-heading"></div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-
                                 <table class="table table-striped table-bordered">
 
                                     <thead>
@@ -458,47 +482,6 @@
 
                                         ?>
                                     </tbody>
-                                </table>
-
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Hasil ID</th>
-                                            <th>Nama</th>
-                                            <th>Hasil VI</th>
-                                            <th>Status</th>
-                                            <th>Jawaban</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include 'koneksi.php';
-                                        $no = 1;
-                                        $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
-                                        $data = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
-                                        if (!$data) {
-                                            printf("Error: %s\n", mysqli_error($conn));
-                                        }
-                                        while ($d = mysqli_fetch_array($data)) {
-                                        ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
-
-                                                <td><?php echo $d['hasil_id']; ?></td>
-                                                <td><?php echo $d['nama']; ?></td>
-                                                <td><?php echo $d['Vi']; ?></td>
-                                                <td><?php echo $d['hasil']; ?></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning btn-sm" onclick="">Terima</button>
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="">Tolak</button>
-                                                </td>
-                                            </tr>
-                                    </tbody>
-                                <?php
-                                        }
-                                ?>
                                 </table>
 
                             </div>
