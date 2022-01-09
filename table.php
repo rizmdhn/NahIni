@@ -433,6 +433,8 @@ if (!$_SESSION['credential'] == 1) {
                                     $xb8 = 0;
                                     $xb9 = 0;
 
+                                    
+
                                     ?>
                                 </tbody>
                             </table>
@@ -561,6 +563,8 @@ if (!$_SESSION['credential'] == 1) {
                                         $dxc9m=($datax9[0]-min($datax9))*($datax9[0]-min($datax9));
                                         $rdmin=sqrt($dxc1m+$dxc2m+$dxc3m+$dxc4m+$dxc5m+$dxc6m+$dxc7m+$dxc8m+$dxc9m);
                                     echo '<td>' . round($rdmin, 4). '</td>';
+
+                                        $vi= $rdmin/($rdmin+$rdplus);
 
 
 
