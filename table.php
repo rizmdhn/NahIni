@@ -319,7 +319,8 @@
                                     ?>
                                 </tbody>
                             </table>
-                            <!-- <table class="table table-striped table-bordered">
+
+                            <table class="table table-striped table-bordered">
                                 <h3>Tabel A+ & A-</h3>
                                 <thead>
                                     <tr>
@@ -413,10 +414,10 @@
                                         $x7 = $c7[$x] / sqrt($hasil7);
                                         $x8 = $c8[$x] / sqrt($hasil8);
                                         $x9 = $c9[$x] / sqrt($hasil9);
-                                        echo '<td>' . round($x1, 4) * 0.13 . '</td>';
-                                        echo '<td>' . round($x2, 4) * 0.13 . '</td>';
+                                        echo '<td>' . round($x1, 4) * 0.1333 . '</td>';
+                                        echo '<td>' . round($x2, 4) * 0.1333 . '</td>';
                                         echo '<td>' . round($x3, 4) * 0.1 . '</td>';
-                                        echo '<td>' . round($x4, 4) * 0.13 . '</td>';
+                                        echo '<td>' . round($x4, 4) * 0.1333 . '</td>';
                                         echo '<td>' . round($x5, 4) * 0.1 . '</td>';
                                         echo '<td>' . round($x6, 4) * 0.1 . '</td>';
                                         echo '<td>' . round($x7, 4) * 0.1 . '</td>';
@@ -435,7 +436,8 @@
                                     }
                                     ?>
                                 </tbody>
-                                </table> -->
+                            </table>
+
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
