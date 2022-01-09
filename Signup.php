@@ -98,7 +98,7 @@ if (isset($_POST['submitregis'])) {
 
 <head>
 	<title>Slide Navbar</title>
-	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+	<link rel="stylesheet" type="text/css" href="slide navbar css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');

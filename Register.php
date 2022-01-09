@@ -1,15 +1,15 @@
-<?php 
- 
+<?php
+
 include 'koneksi.php';
- 
+
 error_reporting(0);
- 
+
 session_start();
- 
+
 if (isset($_SESSION['nama'])) {
     header("Location: login.php");
 }
- 
+
 if (isset($_POST['submit'])) {
     $username = $_POST['nama'];
     $email = $_POST['email'];
@@ -19,13 +19,13 @@ if (isset($_POST['submit'])) {
     $alamat = $_POST['alamat'];
     $NIK = $_POST['NIK'];
 
-        $sql = "SELECT * FROM user WHERE email='$email'";
+    $sql = "SELECT * FROM user WHERE email='$email'";
+    $result = mysqli_query($conn, $sql);
+    if (!$result->num_rows > 0) {
+        $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "SELECT * FROM user WHERE NIK = '$NIK'";
-            $result = mysqli_query($conn, $sql);
-            if(!$result->num_rows>0){
-                $sql = "INSERT INTO user (email, password, nama, tanggal_lahir, no_telp, NIK)
+            $sql = "INSERT INTO user (email, password, nama, tanggal_lahir, no_telp, NIK)
                     VALUES ( '$email', '$password','$nama', '$tanggal_lahir', '$no_telp','$NIK')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
@@ -34,33 +34,32 @@ if (isset($_POST['submit'])) {
                 $email = "";
                 $_POST['password'] = "";
             } else {
-                echo  mysqli_error($conn) ;
+                echo  mysqli_error($conn);
                 echo "<script>alert('Terjadi Kesalahan')</script> ";
             }
-            }
-            else{
-                echo "<script>alert('NIK Sudah Terdaftar.')</script>";
-            }
         } else {
-            echo "<script>alert('Email Sudah Terdaftar.')</script>";
+            echo "<script>alert('NIK Sudah Terdaftar.')</script>";
         }
-         
-    
+    } else {
+        echo "<script>alert('Email Sudah Terdaftar.')</script>";
+    }
 }
- 
+
 ?>
- 
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
-    <link rel="stylesheet" type="text/css" href="style.css">
- 
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
+
 <body>
     <div class="container">
         <form action="" method="POST" class="login-email">
@@ -93,4 +92,5 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 </body>
+
 </html>

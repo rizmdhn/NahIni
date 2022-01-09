@@ -44,7 +44,7 @@
   }
 
   body {
-    background-image: url("quiz.png");
+    background-image: url("img/quiz.png");
     background-size: 1370px;
 
   }
@@ -117,12 +117,11 @@ if (isset($_POST['submittest'])) {
                       echo "<script>alert('Terima Kasih Sudah Mengerjakan')</script>";
                       header("Location: home.php");
                       echo "<script>alert('Anda sudah melakukan test sebelumnya')</script>";
-                       echo "<meta http-equiv='Refresh' content='waktu-tunda'; URL='home/php'>";
-                       echo "<script language=javascript>
+                      echo "<meta http-equiv='Refresh' content='waktu-tunda'; URL='home/php'>";
+                      echo "<script language=javascript>
                        setTimeout('location.href='home.php'', 2);</script>";
                       $arr = "";
                       $ids = "";
-
                     } else {
                       echo "<script>alert('Harap login terlebih dahulu" . $result . "')</script>";
                       $arr = "";
@@ -166,12 +165,12 @@ if (isset($_POST['submittest'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NAHINI EXAM</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <header>
     <script src="slide.js"></script>
     <nav>
-      <img src="Gambar/Nah.png" alt="logo">
+      <img src="img/Nah.png" alt="logo">
       <ul>
         <li><?php echo "Selamat Mengerjakan, " . $_SESSION['nama'] . "!";  ?> </li>
         <li><a href="home.php">Home</a></li>
@@ -465,7 +464,7 @@ if (isset($_POST['submittest'])) {
     <div class="container mt-sm-5 my-1">
       <div class="d-flex align-items-center pt-3">
         <div class="ml-auto mr-sm-5">
-          <button name="submittest" class="btn btn-success" >Submit</button>
+          <button name="submittest" class="btn btn-success">Submit</button>
         </div>
       </div>
     </div>
@@ -476,7 +475,7 @@ if (isset($_POST['submittest'])) {
 
   ?>
   <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  
+
 </body>
 
 </html>

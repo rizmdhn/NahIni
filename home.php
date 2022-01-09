@@ -66,7 +66,7 @@
   }
 
   body {
-    background-image: url("wallpeper.png");
+    background-image: url("img/wallpeper.png");
     background-size: 1370px;
   }
 
@@ -145,7 +145,7 @@ if (isset($_GET['logout'])) {
 <header>
   <script src="slide.js"></script>
   <nav>
-    <img src="Gambar/Nah.png" alt="logo">
+    <img src="img/Nah.png" alt="logo">
     <ul>
       <li><?php echo "Selamat Datang, " . $_SESSION['nama'] . "!";  ?> </li>
       <li><a href="home.php">Home</a></li>
