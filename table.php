@@ -296,6 +296,20 @@
                                         $x7 = $c7[$x] / sqrt($hasil7);
                                         $x8 = $c8[$x] / sqrt($hasil8);
                                         $x9 = $c9[$x] / sqrt($hasil9);
+                                        $xb1 = $x1*5;
+                                        $xb2 = $x2*5;
+                                        $xb3 = $x3*3;
+                                        $xb4 = $x4*5;
+                                        $xb5 = $x5*3;
+                                        $xb6 = $x6*3;
+                                        $xb7 = $x7*3;
+                                        $xb8 = $x8*3;
+                                        $xb9 = $x9*3;
+                                        $datax1 = array_fill($x,$x,$xb1);
+                                        
+                                        array_push($datax1,$xb1);
+
+
                                         echo '<td>' . round($x1, 4) * 5 . '</td>';
                                         echo '<td>' . round($x2, 4) * 5 . '</td>';
                                         echo '<td>' . round($x3, 4) * 3 . '</td>';
@@ -315,6 +329,7 @@
                                         $x7 = 0;
                                         $x8 = 0;
                                         $x9 = 0;
+                                        
                                     }
                                     ?>
                                 </tbody>
@@ -405,38 +420,14 @@
                                     }
                                     
 
-                                    for ($x = 0; $x < sizeof($c1); $x++) {
-                                        $x1 = $c1[$x] / sqrt($hasil1);
-                                        $x2 = $c2[$x] / sqrt($hasil2);
-                                        $x3 = $c3[$x] / sqrt($hasil3);
-                                        $x4 = $c4[$x] / sqrt($hasil4);
-                                        $x5 = $c5[$x] / sqrt($hasil5);
-                                        $x6 = $c6[$x] / sqrt($hasil6);
-                                        $x7 = $c7[$x] / sqrt($hasil7);
-                                        $x8 = $c8[$x] / sqrt($hasil8);
-                                        $x9 = $c9[$x] / sqrt($hasil9);
-                                        $xb1 = $x1*5;
-                                        $xb2 = $x2*5;
-                                        $xb3 = $x3*3;
-                                        $xb4 = $x4*5;
-                                        $xb5 = $x5*3;
-                                        $xb6 = $x6*3;
-                                        $xb7 = $x7*3;
-                                        $xb8 = $x8*3;
-                                        $xb9 = $x9*3;
-                                        echo '<td>' . max($xb1, $xb2, $xb3, $xb4, $xb5, $xb6, $xb7, $xb8, $xb9). '</td>';
+                                    
+                                        
+
+                                        echo '<td>' . max($datax1). '</td>';
    
                                         echo '</tr>';
-                                        $x1 = 0;
-                                        $x2 = 0;
-                                        $x3 = 0;
-                                        $x4 = 0;
-                                        $x5 = 0;
-                                        $x6 = 0;
-                                        $x7 = 0;
-                                        $x8 = 0;
-                                        $x9 = 0;
-                                    }
+                                       
+                                    
                                     ?>
                                 </tbody>
                             </table>
