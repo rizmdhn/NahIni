@@ -4,11 +4,11 @@
 session_start();
 
 if (!isset($_SESSION['nama'])) {
-  header("Location: login.php");
+  header("Location: home.php");
 } 
 if (!$_SESSION['credential'] == 1){
   echo $_SESSION['credential'];
-  header("Location: home.php");
+  header("Location: tabel.php");
 }
 ?>
 <head>
