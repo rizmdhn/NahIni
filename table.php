@@ -438,7 +438,7 @@ if (!$_SESSION['credential'] == 1) {
                             </table>
 
                             <table class="table table-striped table-bordered">
-                                <h3>Tabel Ternormalisasi Bobot</h3>
+                                <h3>D+ D-</h3>
                                 <thead>
                                     <tr>
                                         <th>D+</th>
