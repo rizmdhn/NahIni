@@ -4,13 +4,14 @@
 session_start();
 
 if (!isset($_SESSION['nama'])) {
-  header("Location: login.php");
-} 
-if (!$_SESSION['credential'] == 1){
-  echo $_SESSION['credential'];
-  header("Location: home.php");
+    header("Location: login.php");
+}
+if (!$_SESSION['credential'] == 1) {
+    echo $_SESSION['credential'];
+    header("Location: home.php");
 }
 ?>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,7 +19,7 @@ if (!$_SESSION['credential'] == 1){
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    
+
     <title>NAHINI Warehouse</title>
 
     <!-- Bootstrap Core CSS -->
@@ -317,24 +318,24 @@ if (!$_SESSION['credential'] == 1){
                                         $x7 = $c7[$x] / sqrt($hasil7);
                                         $x8 = $c8[$x] / sqrt($hasil8);
                                         $x9 = $c9[$x] / sqrt($hasil9);
-                                        $xb1 = $x1*5;
-                                        $xb2 = $x2*5;
-                                        $xb3 = $x3*3;
-                                        $xb4 = $x4*5;
-                                        $xb5 = $x5*3;
-                                        $xb6 = $x6*3;
-                                        $xb7 = $x7*3;
-                                        $xb8 = $x8*3;
-                                        $xb9 = $x9*3;
-                                        array_push($datax1,$xb1);
-                                        array_push($datax2,$xb2);
-                                        array_push($datax3,$xb3);
-                                        array_push($datax4,$xb4);
-                                        array_push($datax5,$xb5);
-                                        array_push($datax6,$xb6);
-                                        array_push($datax7,$xb7);
-                                        array_push($datax8,$xb8);
-                                        array_push($datax9,$xb9);
+                                        $xb1 = $x1 * 5;
+                                        $xb2 = $x2 * 5;
+                                        $xb3 = $x3 * 3;
+                                        $xb4 = $x4 * 5;
+                                        $xb5 = $x5 * 3;
+                                        $xb6 = $x6 * 3;
+                                        $xb7 = $x7 * 3;
+                                        $xb8 = $x8 * 3;
+                                        $xb9 = $x9 * 3;
+                                        array_push($datax1, $xb1);
+                                        array_push($datax2, $xb2);
+                                        array_push($datax3, $xb3);
+                                        array_push($datax4, $xb4);
+                                        array_push($datax5, $xb5);
+                                        array_push($datax6, $xb6);
+                                        array_push($datax7, $xb7);
+                                        array_push($datax8, $xb8);
+                                        array_push($datax9, $xb9);
 
 
 
@@ -348,7 +349,6 @@ if (!$_SESSION['credential'] == 1){
                                         echo '<td>' . round($xb8, 4)  . '</td>';
                                         echo '<td>' . round($xb9, 4)  . '</td>';
                                         echo '</tr>';
-                                  
                                     }
                                     ?>
                                 </tbody>
@@ -400,39 +400,39 @@ if (!$_SESSION['credential'] == 1){
                                         array_push($c9, $data[8]);
                                     }
                                     // perhitungan normalisasi
-                                        echo '<tr>';                                        
-                                        echo '<td>' . round(max($datax1), 4). '</td>';
-                                        echo '<td>' . round(max($datax2), 4). '</td>';
-                                        echo '<td>' . round(max($datax3), 4). '</td>';
-                                        echo '<td>' . round(max($datax4), 4). '</td>';
-                                        echo '<td>' . round(max($datax5), 4). '</td>';
-                                        echo '<td>' . round(max($datax6), 4). '</td>';
-                                        echo '<td>' . round(max($datax7), 4). '</td>';
-                                        echo '<td>' . round(max($datax8), 4). '</td>';
-                                        echo '<td>' . round(max($datax9), 4). '</td>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo '<td>' . round(min($datax1), 4). '</td>';
-                                        echo '<td>' . round(min($datax2), 4). '</td>';
-                                        echo '<td>' . round(min($datax3), 4). '</td>';
-                                        echo '<td>' . round(min($datax4), 4). '</td>';
-                                        echo '<td>' . round(min($datax5), 4). '</td>';
-                                        echo '<td>' . round(min($datax6), 4). '</td>';
-                                        echo '<td>' . round(min($datax7), 4). '</td>';
-                                        echo '<td>' . round(min($datax8), 4). '</td>';
-                                        echo '<td>' . round(min($datax9), 4). '</td>';
-                                        echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>' . round(max($datax1), 4) . '</td>';
+                                    echo '<td>' . round(max($datax2), 4) . '</td>';
+                                    echo '<td>' . round(max($datax3), 4) . '</td>';
+                                    echo '<td>' . round(max($datax4), 4) . '</td>';
+                                    echo '<td>' . round(max($datax5), 4) . '</td>';
+                                    echo '<td>' . round(max($datax6), 4) . '</td>';
+                                    echo '<td>' . round(max($datax7), 4) . '</td>';
+                                    echo '<td>' . round(max($datax8), 4) . '</td>';
+                                    echo '<td>' . round(max($datax9), 4) . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>' . round(min($datax1), 4) . '</td>';
+                                    echo '<td>' . round(min($datax2), 4) . '</td>';
+                                    echo '<td>' . round(min($datax3), 4) . '</td>';
+                                    echo '<td>' . round(min($datax4), 4) . '</td>';
+                                    echo '<td>' . round(min($datax5), 4) . '</td>';
+                                    echo '<td>' . round(min($datax6), 4) . '</td>';
+                                    echo '<td>' . round(min($datax7), 4) . '</td>';
+                                    echo '<td>' . round(min($datax8), 4) . '</td>';
+                                    echo '<td>' . round(min($datax9), 4) . '</td>';
+                                    echo '</tr>';
 
-                                        $xb1 = 0;
-                                        $xb2 = 0;
-                                        $xb3 = 0;
-                                        $xb4 = 0;
-                                        $xb5 = 0;
-                                        $xb6 = 0;
-                                        $xb7 = 0;
-                                        $xb8 = 0;
-                                        $xb9 = 0;
-                                    
+                                    $xb1 = 0;
+                                    $xb2 = 0;
+                                    $xb3 = 0;
+                                    $xb4 = 0;
+                                    $xb5 = 0;
+                                    $xb6 = 0;
+                                    $xb7 = 0;
+                                    $xb8 = 0;
+                                    $xb9 = 0;
+
                                     ?>
                                 </tbody>
                             </table>

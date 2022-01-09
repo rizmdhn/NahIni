@@ -66,7 +66,7 @@
   }
 
   body {
-    background-image: url("hasil.png");
+    background-image: url("img/hasil.png");
     background-size: 1370px;
   }
 
@@ -129,8 +129,8 @@ session_start();
 
 if (!isset($_SESSION['nama'])) {
   header("Location: login.php");
-} 
-if (!$_SESSION['credential'] == 1){
+}
+if (!$_SESSION['credential'] == 1) {
   echo $_SESSION['credential'];
   header("Location: home.php");
 }
@@ -152,7 +152,7 @@ if (isset($_GET['logout'])) {
 <header>
   <script src="slide.js"></script>
   <nav>
-    <img src="Gambar/Nah.png" alt="logo">
+    <img src="img/Nah.png" alt="logo">
     <ul>
       <li><?php echo "Selamat Datang, " . $_SESSION['nama'] . "!";  ?> </li>
       <li><a href="home.php?logout=true">logout</a></li>
@@ -163,5 +163,5 @@ if (isset($_GET['logout'])) {
 <body>
   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:-90px; margin-top:40px; font-size: 60px; width: 800px;"> NahIni Corps</p>
   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:70px; margin-top:-50px; font-size: 30px; width: 800px;"> Motion Graph & 3D animation</p>
-  
+
 </body>
