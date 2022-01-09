@@ -42,8 +42,9 @@
                         <div class="panel-heading">Warehouse Stocks</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-
+                            <h3>Data</h3>
                             <table class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -71,23 +72,24 @@
                                     }
                                     while ($d = mysqli_fetch_array($datas)) {
                                         echo '<tr>';
-                                        echo '<td>'.$no++.'</td>';
-                                        echo '<td>'.$d['nama'].'</td>';
+                                        echo '<td>' . $no++ . '</td>';
+                                        echo '<td>' . $d['nama'] . '</td>';
                                         $data = json_decode($d['array_jawaban']);
                                         foreach ($data as $dat) {
-                                        echo '<td>'. $dat . '</td>';
+                                            echo '<td>' . $dat . '</td>';
                                         }
                                     }
-                                   ?>
-                                       
-                                        
+                                    ?>
 
-                                        </tr>
+
+
+                                    </tr>
                                 </tbody>
-                            
+
                             </table>
 
                             <table class="table table-striped table-bordered">
+                                <h3>Tabel Ternormalisasi</h3>
                                 <thead>
                                     <tr>
                                         <th>C1</th>
@@ -103,7 +105,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
+                                    <?php
                                     include 'koneksi.php';
                                     $c1 = array();
                                     $c2 = array();
@@ -121,97 +123,96 @@
                                     }
                                     while ($d = mysqli_fetch_array($datas)) {
                                         $data = json_decode($d['array_jawaban']);
-                                            array_push($c1, $data[0]);
-                                            array_push($c2, $data[1]);
-                                            array_push($c3, $data[2]);
-                                            array_push($c4, $data[3]);
-                                            array_push($c5, $data[4]);
-                                            array_push($c6, $data[5]);
-                                            array_push($c7, $data[6]);
-                                            array_push($c8, $data[7]);
-                                            array_push($c9, $data[8]);
+                                        array_push($c1, $data[0]);
+                                        array_push($c2, $data[1]);
+                                        array_push($c3, $data[2]);
+                                        array_push($c4, $data[3]);
+                                        array_push($c5, $data[4]);
+                                        array_push($c6, $data[5]);
+                                        array_push($c7, $data[6]);
+                                        array_push($c8, $data[7]);
+                                        array_push($c9, $data[8]);
                                     }
                                     // perhitungan normalisasi
-                                        echo '<tr>';
-                                        $hasil1 = 0;
-                                        $hasil2 = 0;
-                                        $hasil3 = 0;
-                                        $hasil4 = 0;
-                                        $hasil5 = 0;
-                                        $hasil6 = 0;
-                                        $hasil7 = 0;
-                                        $hasil8 = 0;
-                                        $hasil9 = 0;
-                                        foreach ($c1 as $num){
-                                            $hasil1 += $num*$num;
-                                        }
-                                        foreach ($c2 as $num){
-                                            $hasil2 += $num*$num;
-                                        }
-                                        foreach ($c3 as $num){
-                                            $hasil3 += $num*$num;
-                                        }
-                                        foreach ($c4 as $num){
-                                            $hasil4 += $num*$num;
-                                        }
-                                        foreach ($c5 as $num){
-                                            $hasil5 += $num*$num;
-                                        }
-                                        foreach ($c6 as $num){
-                                            $hasil6 += $num*$num;
-                                        }
-                                        foreach ($c7 as $num){
-                                            $hasil7 += $num*$num;
-                                        }
-                                        foreach ($c8 as $num){
-                                            $hasil8 += $num*$num;
-                                        }
-                                        foreach ($c9 as $num){
-                                            $hasil9 += $num*$num;
-                                        }
-                                        for ($x = 0 ; $x < sizeof($c1); $x++){
-                                           
-                                            $x1 = $c1[$x]/sqrt($hasil1);
-                                            $x2 = $c2[$x]/sqrt($hasil2);
-                                            $x3 = $c3[$x]/sqrt($hasil3);
-                                            $x4 = $c4[$x]/sqrt($hasil4);
-                                            $x5 = $c5[$x]/sqrt($hasil5);
-                                            $x6 = $c6[$x]/sqrt($hasil6);
-                                            $x7 = $c7[$x]/sqrt($hasil7);
-                                            $x8 = $c8[$x]/sqrt($hasil8);
-                                            $x9 = $c9[$x]/sqrt($hasil9);
-                                            echo '<td>'. round($x1, 4) .'</td>';
-                                            echo '<td>'. round($x2, 4) .'</td>';
-                                            echo '<td>'. round($x3, 4) .'</td>';
-                                            echo '<td>'. round($x4, 4) .'</td>';
-                                            echo '<td>'. round($x5, 4).'</td>';
-                                            echo '<td>'. round($x6, 4) .'</td>';
-                                            echo '<td>'. round($x7, 4) .'</td>';
-                                            echo '<td>'. round($x8, 4) .'</td>';
-                                            echo '<td>'. round($x9, 4) .'</td>';
-                                            echo '</tr>';
-                                            $x1 = 0;
-                                            $x2 = 0;
-                                            $x3  = 0;
-                                            $x4 = 0;
-                                            $x5 = 0;
-                                            $x6 = 0;
-                                            $x7 = 0;
-                                            $x8 = 0;
-                                            $x9 = 0;
-                                        }
-                                    
-                                 
-                                    
-                                   
-                                  
+                                    echo '<tr>';
+                                    $hasil1 = 0;
+                                    $hasil2 = 0;
+                                    $hasil3 = 0;
+                                    $hasil4 = 0;
+                                    $hasil5 = 0;
+                                    $hasil6 = 0;
+                                    $hasil7 = 0;
+                                    $hasil8 = 0;
+                                    $hasil9 = 0;
+                                    foreach ($c1 as $num) {
+                                        $hasil1 += $num * $num;
+                                    }
+                                    foreach ($c2 as $num) {
+                                        $hasil2 += $num * $num;
+                                    }
+                                    foreach ($c3 as $num) {
+                                        $hasil3 += $num * $num;
+                                    }
+                                    foreach ($c4 as $num) {
+                                        $hasil4 += $num * $num;
+                                    }
+                                    foreach ($c5 as $num) {
+                                        $hasil5 += $num * $num;
+                                    }
+                                    foreach ($c6 as $num) {
+                                        $hasil6 += $num * $num;
+                                    }
+                                    foreach ($c7 as $num) {
+                                        $hasil7 += $num * $num;
+                                    }
+                                    foreach ($c8 as $num) {
+                                        $hasil8 += $num * $num;
+                                    }
+                                    foreach ($c9 as $num) {
+                                        $hasil9 += $num * $num;
+                                    }
+                                    for ($x = 0; $x < sizeof($c1); $x++) {
 
-                                   ?>
-
+                                        $x1 = $c1[$x] / sqrt($hasil1);
+                                        $x2 = $c2[$x] / sqrt($hasil2);
+                                        $x3 = $c3[$x] / sqrt($hasil3);
+                                        $x4 = $c4[$x] / sqrt($hasil4);
+                                        $x5 = $c5[$x] / sqrt($hasil5);
+                                        $x6 = $c6[$x] / sqrt($hasil6);
+                                        $x7 = $c7[$x] / sqrt($hasil7);
+                                        $x8 = $c8[$x] / sqrt($hasil8);
+                                        $x9 = $c9[$x] / sqrt($hasil9);
+                                        echo '<td>' . round($x1, 4) . '</td>';
+                                        echo '<td>' . round($x2, 4) . '</td>';
+                                        echo '<td>' . round($x3, 4) . '</td>';
+                                        echo '<td>' . round($x4, 4) . '</td>';
+                                        echo '<td>' . round($x5, 4) . '</td>';
+                                        echo '<td>' . round($x6, 4) . '</td>';
+                                        echo '<td>' . round($x7, 4) . '</td>';
+                                        echo '<td>' . round($x8, 4) . '</td>';
+                                        echo '<td>' . round($x9, 4) . '</td>';
+                                        echo '</tr>';
+                                        $x1 = 0;
+                                        $x2 = 0;
+                                        $x3  = 0;
+                                        $x4 = 0;
+                                        $x5 = 0;
+                                        $x6 = 0;
+                                        $x7 = 0;
+                                        $x8 = 0;
+                                        $x9 = 0;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
+<<<<<<< HEAD
                            
                             <table class="table table-striped table-bordered">
+=======
+
+                            <table class="table table-striped table-bordered">
+                                <h3>Tabel Ternormalisasi Bobot</h3>
+>>>>>>> 2b1affac53e222a7c11af65c6b6ee62c2a485e43
                                 <thead>
                                     <tr>
                                         <th>C1</th>
@@ -227,7 +228,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+<<<<<<< HEAD
                                 <?php
+=======
+                                    <?php
+>>>>>>> 2b1affac53e222a7c11af65c6b6ee62c2a485e43
                                     include 'koneksi.php';
                                     $c1 = array();
                                     $c2 = array();
@@ -245,6 +250,7 @@
                                     }
                                     while ($d = mysqli_fetch_array($datas)) {
                                         $data = json_decode($d['array_jawaban']);
+<<<<<<< HEAD
                                             array_push($c1, $data[0]);
                                             array_push($c2, $data[1]);
                                             array_push($c3, $data[2]);
@@ -344,6 +350,91 @@
                                 </tbody>
                             </table>
                         
+=======
+                                        array_push($c1, $data[0]);
+                                        array_push($c2, $data[1]);
+                                        array_push($c3, $data[2]);
+                                        array_push($c4, $data[3]);
+                                        array_push($c5, $data[4]);
+                                        array_push($c6, $data[5]);
+                                        array_push($c7, $data[6]);
+                                        array_push($c8, $data[7]);
+                                        array_push($c9, $data[8]);
+                                    }
+                                    // perhitungan normalisasi
+                                    echo '<tr>';
+                                    $hasil1 = 0;
+                                    $hasil2 = 0;
+                                    $hasil3 = 0;
+                                    $hasil4 = 0;
+                                    $hasil5 = 0;
+                                    $hasil6 = 0;
+                                    $hasil7 = 0;
+                                    $hasil8 = 0;
+                                    $hasil9 = 0;
+                                    foreach ($c1 as $num) {
+                                        $hasil1 += $num * $num;
+                                    }
+                                    foreach ($c2 as $num) {
+                                        $hasil2 += $num * $num;
+                                    }
+                                    foreach ($c3 as $num) {
+                                        $hasil3 += $num * $num;
+                                    }
+                                    foreach ($c4 as $num) {
+                                        $hasil4 += $num * $num;
+                                    }
+                                    foreach ($c5 as $num) {
+                                        $hasil5 += $num * $num;
+                                    }
+                                    foreach ($c6 as $num) {
+                                        $hasil6 += $num * $num;
+                                    }
+                                    foreach ($c7 as $num) {
+                                        $hasil7 += $num * $num;
+                                    }
+                                    foreach ($c8 as $num) {
+                                        $hasil8 += $num * $num;
+                                    }
+                                    foreach ($c9 as $num) {
+                                        $hasil9 += $num * $num;
+                                    }
+                                    for ($x = 0; $x < sizeof($c1); $x++) {
+
+                                        $x1 = $c1[$x] / sqrt($hasil1);
+                                        $x2 = $c2[$x] / sqrt($hasil2);
+                                        $x3 = $c3[$x] / sqrt($hasil3);
+                                        $x4 = $c4[$x] / sqrt($hasil4);
+                                        $x5 = $c5[$x] / sqrt($hasil5);
+                                        $x6 = $c6[$x] / sqrt($hasil6);
+                                        $x7 = $c7[$x] / sqrt($hasil7);
+                                        $x8 = $c8[$x] / sqrt($hasil8);
+                                        $x9 = $c9[$x] / sqrt($hasil9);
+                                        echo '<td>' . round($x1, 4) * 5 . '</td>';
+                                        echo '<td>' . round($x2, 4) * 5 . '</td>';
+                                        echo '<td>' . round($x3, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x4, 4) . '</td>';
+                                        echo '<td>' . round($x5, 4) . '</td>';
+                                        echo '<td>' . round($x6, 4) . '</td>';
+                                        echo '<td>' . round($x7, 4) . '</td>';
+                                        echo '<td>' . round($x8, 4) . '</td>';
+                                        echo '<td>' . round($x9, 4) . '</td>';
+                                        echo '</tr>';
+                                        $x1 = 0;
+                                        $x2 = 0;
+                                        $x3  = 0;
+                                        $x4 = 0;
+                                        $x5 = 0;
+                                        $x6 = 0;
+                                        $x7 = 0;
+                                        $x8 = 0;
+                                        $x9 = 0;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+
+>>>>>>> 2b1affac53e222a7c11af65c6b6ee62c2a485e43
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>

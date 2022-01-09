@@ -115,8 +115,14 @@ if (isset($_POST['submittest'])) {
                     $sql = "INSERT into hasil (user_id, array_jawaban) VALUES ('$ids','$arr')";
                     if ($conn->query($sql) === TRUE) {
                       echo "<script>alert('Terima Kasih Sudah Mengerjakan')</script>";
+                      header("Location: home.php");
+                      echo "<script>alert('Anda sudah melakukan test sebelumnya')</script>";
+                       echo "<meta http-equiv='Refresh' content='waktu-tunda'; URL='home/php'>";
+                       echo "<script language=javascript>
+                       setTimeout('location.href='home.php'', 2);</script>";
                       $arr = "";
                       $ids = "";
+
                     } else {
                       echo "<script>alert('Harap login terlebih dahulu" . $result . "')</script>";
                       $arr = "";
