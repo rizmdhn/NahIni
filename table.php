@@ -194,7 +194,7 @@
                                         echo '</tr>';
                                         $x1 = 0;
                                         $x2 = 0;
-                                        $x3  = 0;
+                                        $x3 = 0;
                                         $x4 = 0;
                                         $x5 = 0;
                                         $x6 = 0;
@@ -413,12 +413,12 @@
                                         echo '<td>' . round($x1, 4) * 5 . '</td>';
                                         echo '<td>' . round($x2, 4) * 5 . '</td>';
                                         echo '<td>' . round($x3, 4) * 3 . '</td>';
-                                        echo '<td>' . round($x4, 4) . '</td>';
-                                        echo '<td>' . round($x5, 4) . '</td>';
-                                        echo '<td>' . round($x6, 4) . '</td>';
-                                        echo '<td>' . round($x7, 4) . '</td>';
-                                        echo '<td>' . round($x8, 4) . '</td>';
-                                        echo '<td>' . round($x9, 4) . '</td>';
+                                        echo '<td>' . round($x4, 4) * 5 . '</td>';
+                                        echo '<td>' . round($x5, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x6, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x7, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x8, 4) * 3 . '</td>';
+                                        echo '<td>' . round($x9, 4) * 3 . '</td>';
                                         echo '</tr>';
                                         $x1 = 0;
                                         $x2 = 0;
