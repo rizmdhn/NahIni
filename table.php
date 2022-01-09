@@ -438,7 +438,7 @@ if (!$_SESSION['credential'] == 1) {
                             </table>
 
                             <table class="table table-striped table-bordered">
-                                <h3>Tabel Ternormalisasi Bobot</h3>
+                                <h3>D+ D-</h3>
                                 <thead>
                                     <tr>
                                         <th>D+</th>
@@ -539,9 +539,18 @@ if (!$_SESSION['credential'] == 1) {
 
 
 
-                                        $dx1=(max($datax1)-$datax1[0])*(max($datax1)-$datax1[0]);
-                                    echo '<td>' . round($dx1, 4). '</td>';
-                                    echo '<td>' . round($dx1, 4). '</td>';
+                                        $dxc1=(max($datax1)-$datax1[0])*(max($datax1)-$datax1[0]);
+                                        $dxc2=(max($datax2)-$datax2[0])*(max($datax2)-$datax2[0]);
+                                        $dxc3=(max($datax3)-$datax3[0])*(max($datax3)-$datax3[0]);
+                                        $dxc4=(max($datax4)-$datax4[0])*(max($datax4)-$datax4[0]);
+                                        $dxc5=(max($datax5)-$datax5[0])*(max($datax5)-$datax5[0]);
+                                        $dxc6=(max($datax6)-$datax6[0])*(max($datax6)-$datax6[0]);
+                                        $dxc7=(max($datax7)-$datax7[0])*(max($datax7)-$datax7[0]);
+                                        $dxc8=(max($datax8)-$datax8[0])*(max($datax8)-$datax8[0]);
+                                        $dxc9=(max($datax9)-$datax9[0])*(max($datax9)-$datax9[0]);
+                                        $rdplus=sqrt($dxc1+$dxc2+$dxc3+$dxc4+$dxc5+$dxc6+$dxc7+$dxc8+$dxc9);
+                                    echo '<td>' . round($rdplus, 4). '</td>';
+
 
 
                                   
