@@ -436,52 +436,46 @@
                                     ?>
                                 </tbody>
                                 </table> -->
-
-
-                            <<<<<<< HEAD==============>>>>>>> 2b1affac53e222a7c11af65c6b6ee62c2a485e43
-                                >>>>>>> 89cddd8211210d447788c9c139844c62954eb9ba
-                                >>>>>>> 7eb02202d58750099650f4e0a0b30941bf8aebfc
-                                >>>>>>> befad2d104682205403ab83c2ccef9123b67afce
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Hasil ID</th>
-                                            <th>Nama</th>
-                                            <th>Hasil VI</th>
-                                            <th>Status</th>
-                                            <th>Jawaban</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include 'koneksi.php';
-                                        $no = 1;
-                                        $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
-                                        $data = mysqli_query($conn, "select * from hasil 
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Hasil ID</th>
+                                        <th>Nama</th>
+                                        <th>Hasil VI</th>
+                                        <th>Status</th>
+                                        <th>Jawaban</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include 'koneksi.php';
+                                    $no = 1;
+                                    $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
+                                    $data = mysqli_query($conn, "select * from hasil 
                                     LEFT JOIN user ON hasil.user_id=user.user_id");
-                                        if (!$data) {
-                                            printf("Error: %s\n", mysqli_error($conn));
-                                        }
-                                        while ($d = mysqli_fetch_array($data)) {
-                                        ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
+                                    if (!$data) {
+                                        printf("Error: %s\n", mysqli_error($conn));
+                                    }
+                                    while ($d = mysqli_fetch_array($data)) {
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $no++; ?></td>
 
-                                                <td><?php echo $d['hasil_id']; ?></td>
-                                                <td><?php echo $d['nama']; ?></td>
-                                                <td><?php echo $d['Vi']; ?></td>
-                                                <td><?php echo $d['hasil']; ?></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning btn-sm" onclick="">Terima</button>
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="">Tolak</button>
-                                                </td>
-                                            </tr>
-                                    </tbody>
-                                <?php
-                                        }
-                                ?>
-                                </table>
+                                            <td><?php echo $d['hasil_id']; ?></td>
+                                            <td><?php echo $d['nama']; ?></td>
+                                            <td><?php echo $d['Vi']; ?></td>
+                                            <td><?php echo $d['hasil']; ?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning btn-sm" onclick="">Terima</button>
+                                                <button type="button" class="btn btn-danger btn-sm" onclick="">Tolak</button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            <?php
+                                    }
+                            ?>
+                            </table>
 
                         </div>
                         <!-- /.panel-body -->
