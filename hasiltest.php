@@ -7,7 +7,6 @@
    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Zen+Loop&display=swap');
 
    body {
-      font-family: sans-serif;
       margin: 0;
       padding: 0;
    }
@@ -65,7 +64,6 @@
    }
 
    body {
-      background-image: url("img/menunggu.png");
       background-size: 1370px;
    }
 
@@ -110,21 +108,49 @@
 </style>
 
 <header>
-   <script src="slide.js"></script>
    <nav>
       <img src="img/Nah.png" alt="logo">
       <ul>
          <li><a href="home.php">Home</a></li>
          <li><a href="prequiz.php">Test</a></li>
          <li><a href="hasiltest.php">Hasil Test</a></li>
-         <li><a>Log Out</a></li>
+         <li><a href="home.php?logout=true">logout</a></li>
       </ul>
    </nav>
 </header>
+<?php
+include 'koneksi.php';
+session_start();
+$id = $_SESSION['user_id'];
+$sql = "SELECT * FROM hasil WHERE user_id =  $id";
+	$result = mysqli_query($conn, $sql);
+	if ($result->num_rows > 0) {
+		$row = mysqli_fetch_assoc($result);
+      if ($row['hasil'] == "DITERIMA"){
+         echo '<body style="background-image: url(&#039 img/diterima.png &#039);">';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:-100px; font-size: 60px; width: 800px;"> NahIni Corps</p>';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:-50px; font-size: 30px; width: 800px;"> Hasil Test Anda Adalah :</p>';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:120px; font-size: 30px; width: 800px;">'. $row['hasil'] .'</p>';
+         echo '</body>'; };
+      if ($row['hasil'] == "DITOLAK"){
+         echo '<body style="background-image: url(&#039 img/tidakditerima.png &#039);">';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:-100px; font-size: 60px; width: 800px;"> NahIni Corps</p>';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:-50px; font-size: 30px; width: 800px;"> Hasil Test Anda Adalah :</p>';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:120px; font-size: 30px; width: 800px;">'. $row['hasil'] .'</p>';
+         echo '</body>';
+      };
+      if ($row['hasil'] == "Waiting"){
+         echo '<body style="background-image: url(&#039 img/menunggu.png &#039);">';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:-100px; font-size: 60px; width: 800px;"> NahIni Corps</p>';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:-50px; font-size: 30px; width: 800px;"> Hasil Test Anda Adalah :</p>';
+         echo '<p style="font-family: &#039 Josefin Sans &#039, sans-serif; text-align: center; margin-left:295px; margin-top:120px; font-size: 30px; width: 800px;">'. $row['hasil'] .'</p>';
+         echo '</body>';};
+      
+	} else {
+		echo "<script>alert('anda belum melakukan test')</script>";
+      header("location : home.php");
+	}
 
-<body>
-   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:295px; margin-top:-100px; font-size: 60px; width: 800px;"> NahIni Corps</p>
-   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:295px; margin-top:-50px; font-size: 30px; width: 800px;"> Hasil Test Anda Adalah :</p>
-   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:295px; margin-top:120px; font-size: 30px; width: 800px;"> a</p>
 
-</body>
+
+?>

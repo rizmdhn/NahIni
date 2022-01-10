@@ -21,12 +21,13 @@ if (isset($_POST['submitlogin'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
 
-	$sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+	$sql = "SELECT * FROM user WHERE  email='$email' AND password='$password' ";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['nama'] = $row['nama'];
 		$_SESSION['credential'] = $row['credential'];
+		$_SESSION['user_id'] = $row['user_id'];
 		header("Location: home.php");
 	} else {
 		echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
