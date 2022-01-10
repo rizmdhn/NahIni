@@ -5,7 +5,14 @@ include 'koneksi.php';
 error_reporting(0);
 
 session_start();
-
+				$nama = null;
+				$email1 = null;
+				$password1 = null;;
+				$tanggal_lahir = null;
+				$no_telp = null;
+				$alamat = null;
+				$NIK = null;
+				echo $NIK;
 if (isset($_SESSION['nama'])) {
 	header("Location: home.php");
 }
@@ -23,7 +30,6 @@ if (isset($_POST['submitlogin'])) {
 		header("Location: home.php");
 	} else {
 		echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
-		header("Location: home.php");
 	}
 }
 
@@ -56,8 +62,7 @@ if (isset($_POST['submitregis'])) {
 				$NIK = "";
 				$_POST['password'] = "";
 			} else {
-				echo  mysqli_error($conn);
-				echo "<script>alert('Terjadi Kesalahan')</script> ";
+				echo "<script>alert('Terjadi Kesalahan'". mysqli_error($conn) .")</script> ";
 				$nama = "";
 				$email1 = "";
 				$password1 = "";

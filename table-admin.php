@@ -537,188 +537,73 @@ if (isset($_GET['logout'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Table D+ & D-</div>
+                            <div class="panel-heading">Table D+, D- & Vi</div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
 
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>D+</th>
-                                            <th>D-</th>
-                                            <th>C3</th>
-                                            <th>C4</th>
-                                            <th>C5</th>
-                                            <th>C6</th>
-                                            <th>C7</th>
-                                            <th>C8</th>
-                                            <th>C9</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include 'koneksi.php';
-                                        $c1 = array();
-                                        $c2 = array();
-                                        $c3 = array();
-                                        $c4 = array();
-                                        $c5 = array();
-                                        $c6 = array();
-                                        $c7 = array();
-                                        $c8 = array();
-                                        $c9 = array();
-                                        $datas = mysqli_query($conn, "select * from hasil 
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>D+</th>
+                                        <th>D-</th>
+                                        <th>Vi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include 'koneksi.php';
+                                    $datanama = array();
+                                    $no = 1;
+                                    $ids= array();
+                                    $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
+                                    $data = mysqli_query($conn, "select * from hasil 
                                     LEFT JOIN user ON hasil.user_id=user.user_id");
-                                        if (!$datas) {
-                                            printf("Error: %s\n", mysqli_error($conn));
-                                        }
-                                        while ($d = mysqli_fetch_array($datas)) {
-                                            $data = json_decode($d['array_jawaban']);
-                                            array_push($c1, $data[0]);
-                                            array_push($c2, $data[1]);
-                                            array_push($c3, $data[2]);
-                                            array_push($c4, $data[3]);
-                                            array_push($c5, $data[4]);
-                                            array_push($c6, $data[5]);
-                                            array_push($c7, $data[6]);
-                                            array_push($c8, $data[7]);
-                                            array_push($c9, $data[8]);
-                                        }
-                                        // perhitungan normalisasi
-                                        echo '<tr>';
-                                        echo '<td>' . round(max($datax1), 4) . '</td>';
-                                        echo '<td>' . round(max($datax2), 4) . '</td>';
-                                        echo '<td>' . round(max($datax3), 4) . '</td>';
-                                        echo '<td>' . round(max($datax4), 4) . '</td>';
-                                        echo '<td>' . round(max($datax5), 4) . '</td>';
-                                        echo '<td>' . round(max($datax6), 4) . '</td>';
-                                        echo '<td>' . round(max($datax7), 4) . '</td>';
-                                        echo '<td>' . round(max($datax8), 4) . '</td>';
-                                        echo '<td>' . round(max($datax9), 4) . '</td>';
+                                    // perhitungan normalisasi
+                                    if (!$data) {
+                                        printf("Error: %s\n", mysqli_error($conn));
+                                    }
+                                    while ($d = mysqli_fetch_array($data)) {
+                                        array_push($datanama, $d['nama']);
+                                        array_push($ids, $d['user_id']);
+                                        
+                                    }
+                                    echo '<tr>';
+                                    for ($x = 0; $x < sizeof($c1); $x++) {
+                                        echo '<td>' . $datanama[$x] . '</td>';
+                                        $dxc1 = (max($datax1) - $datax1[$x]) * (max($datax1) - $datax1[$x]);
+                                        $dxc2 = (max($datax2) - $datax2[$x]) * (max($datax2) - $datax2[$x]);
+                                        $dxc3 = (max($datax3) - $datax3[$x]) * (max($datax3) - $datax3[$x]);
+                                        $dxc4 = (max($datax4) - $datax4[$x]) * (max($datax4) - $datax4[$x]);
+                                        $dxc5 = (max($datax5) - $datax5[$x]) * (max($datax5) - $datax5[$x]);
+                                        $dxc6 = (max($datax6) - $datax6[$x]) * (max($datax6) - $datax6[$x]);
+                                        $dxc7 = (max($datax7) - $datax7[$x]) * (max($datax7) - $datax7[$x]);
+                                        $dxc8 = (max($datax8) - $datax8[$x]) * (max($datax8) - $datax8[$x]);
+                                        $dxc9 = (max($datax9) - $datax9[$x]) * (max($datax9) - $datax9[$x]);
+                                        $rdplus = sqrt($dxc1 + $dxc2 + $dxc3 + $dxc4 + $dxc5 + $dxc6 + $dxc7 + $dxc8 + $dxc9);
+                                        echo '<td>' . round($rdplus, 4) . '</td>';
+                                        $dxc1m = ($datax1[$x] - min($datax1)) * ($datax1[$x] - min($datax1));
+                                        $dxc2m = ($datax2[$x] - min($datax2)) * ($datax2[$x] - min($datax2));
+                                        $dxc3m = ($datax3[$x] - min($datax3)) * ($datax3[$x] - min($datax3));
+                                        $dxc4m = ($datax4[$x] - min($datax4)) * ($datax4[$x] - min($datax4));
+                                        $dxc5m = ($datax5[$x] - min($datax5)) * ($datax5[$x] - min($datax5));
+                                        $dxc6m = ($datax6[$x] - min($datax6)) * ($datax6[$x] - min($datax6));
+                                        $dxc7m = ($datax7[$x] - min($datax7)) * ($datax7[$x] - min($datax7));
+                                        $dxc8m = ($datax8[$x] - min($datax8)) * ($datax8[$x] - min($datax8));
+                                        $dxc9m = ($datax9[$x] - min($datax9)) * ($datax9[$x] - min($datax9));
+                                        $rdmin = sqrt($dxc1m + $dxc2m + $dxc3m + $dxc4m + $dxc5m + $dxc6m + $dxc7m + $dxc8m + $dxc9m);
+                                        $vi = $rdmin / ($rdmin + $rdplus);
+                                        echo '<td>' . round($rdmin, 4) . '</td>';
+                                        echo '<td>' . $vi . '</td>';
                                         echo '</tr>';
-                                        echo '<tr>';
-                                        echo '<td>' . round(min($datax1), 4) . '</td>';
-                                        echo '<td>' . round(min($datax2), 4) . '</td>';
-                                        echo '<td>' . round(min($datax3), 4) . '</td>';
-                                        echo '<td>' . round(min($datax4), 4) . '</td>';
-                                        echo '<td>' . round(min($datax5), 4) . '</td>';
-                                        echo '<td>' . round(min($datax6), 4) . '</td>';
-                                        echo '<td>' . round(min($datax7), 4) . '</td>';
-                                        echo '<td>' . round(min($datax8), 4) . '</td>';
-                                        echo '<td>' . round(min($datax9), 4) . '</td>';
-                                        echo '</tr>';
-
-                                        $xb1 = 0;
-                                        $xb2 = 0;
-                                        $xb3 = 0;
-                                        $xb4 = 0;
-                                        $xb5 = 0;
-                                        $xb6 = 0;
-                                        $xb7 = 0;
-                                        $xb8 = 0;
-                                        $xb9 = 0;
-
-                                        ?>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            <!-- /.panel-body -->
-                        </div>
-                        <!-- /.panel -->
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.vi -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Table Vi</div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>D+</th>
-                                            <th>D-</th>
-                                            <th>C3</th>
-                                            <th>C4</th>
-                                            <th>C5</th>
-                                            <th>C6</th>
-                                            <th>C7</th>
-                                            <th>C8</th>
-                                            <th>C9</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include 'koneksi.php';
-                                        $c1 = array();
-                                        $c2 = array();
-                                        $c3 = array();
-                                        $c4 = array();
-                                        $c5 = array();
-                                        $c6 = array();
-                                        $c7 = array();
-                                        $c8 = array();
-                                        $c9 = array();
-                                        $datas = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
-                                        if (!$datas) {
-                                            printf("Error: %s\n", mysqli_error($conn));
-                                        }
-                                        while ($d = mysqli_fetch_array($datas)) {
-                                            $data = json_decode($d['array_jawaban']);
-                                            array_push($c1, $data[0]);
-                                            array_push($c2, $data[1]);
-                                            array_push($c3, $data[2]);
-                                            array_push($c4, $data[3]);
-                                            array_push($c5, $data[4]);
-                                            array_push($c6, $data[5]);
-                                            array_push($c7, $data[6]);
-                                            array_push($c8, $data[7]);
-                                            array_push($c9, $data[8]);
-                                        }
-                                        // perhitungan normalisasi
-                                        echo '<tr>';
-                                        echo '<td>' . round(max($datax1), 4) . '</td>';
-                                        echo '<td>' . round(max($datax2), 4) . '</td>';
-                                        echo '<td>' . round(max($datax3), 4) . '</td>';
-                                        echo '<td>' . round(max($datax4), 4) . '</td>';
-                                        echo '<td>' . round(max($datax5), 4) . '</td>';
-                                        echo '<td>' . round(max($datax6), 4) . '</td>';
-                                        echo '<td>' . round(max($datax7), 4) . '</td>';
-                                        echo '<td>' . round(max($datax8), 4) . '</td>';
-                                        echo '<td>' . round(max($datax9), 4) . '</td>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo '<td>' . round(min($datax1), 4) . '</td>';
-                                        echo '<td>' . round(min($datax2), 4) . '</td>';
-                                        echo '<td>' . round(min($datax3), 4) . '</td>';
-                                        echo '<td>' . round(min($datax4), 4) . '</td>';
-                                        echo '<td>' . round(min($datax5), 4) . '</td>';
-                                        echo '<td>' . round(min($datax6), 4) . '</td>';
-                                        echo '<td>' . round(min($datax7), 4) . '</td>';
-                                        echo '<td>' . round(min($datax8), 4) . '</td>';
-                                        echo '<td>' . round(min($datax9), 4) . '</td>';
-                                        echo '</tr>';
-
-                                        $xb1 = 0;
-                                        $xb2 = 0;
-                                        $xb3 = 0;
-                                        $xb4 = 0;
-                                        $xb5 = 0;
-                                        $xb6 = 0;
-                                        $xb7 = 0;
-                                        $xb8 = 0;
-                                        $xb9 = 0;
-
-                                        ?>
-                                    </tbody>
-                                </table>
+                                        $stmt = $conn->prepare("UPDATE hasil SET vi = ? WHERE user_id =?");
+                                        $stmt->bind_param("si", $vi, $ids[$x]);
+                                        $stmt->execute();
+                                        $stmt->close(); 
+                                   }
+                                    ?>
+                                </tbody>
+                            </table>
 
                             </div>
                             <!-- /.panel-body -->
