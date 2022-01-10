@@ -65,7 +65,6 @@
    }
 
    body {
-      background-image: url("img/menunggu.png");
       background-size: 1370px;
    }
 
@@ -109,6 +108,17 @@
    }
 </style>
 
+<?php 
+function Logout()
+{
+  session_start();
+  session_destroy();
+  header("Location: Signup.php");
+}
+if (isset($_GET['logout'])) {
+  Logout();
+}
+?>
 <header>
    <script src="slide.js"></script>
    <nav>
@@ -117,12 +127,12 @@
          <li><a href="home.php">Home</a></li>
          <li><a href="prequiz.php">Test</a></li>
          <li><a href="hasiltest.php">Hasil Test</a></li>
-         <li><a>Log Out</a></li>
+         <li><a href="hasiltest.php?logout=true">logout</a></li>
       </ul>
    </nav>
 </header>
 
-<body>
+<body style="background-image: url('img/menunggu.png');">
    <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:295px; margin-top:-100px; font-size: 60px; width: 800px;"> NahIni Corps</p>
    <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:295px; margin-top:-50px; font-size: 30px; width: 800px;"> Hasil Test Anda Adalah :</p>
 
