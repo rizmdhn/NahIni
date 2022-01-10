@@ -98,7 +98,7 @@ if (isset($_GET['logout'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"></div>
+                            <div class="panel-heading">Participant</div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
 
