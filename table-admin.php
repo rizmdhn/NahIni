@@ -81,7 +81,7 @@ if (isset($_GET['logout'])) {
                             <a href="homepage-admin.php"><i class="fa fa-dashboard fa-fw"></i> Homepage</a>
                         </li>
                         <li>
-                            <a href="table-admin.php" class="active"><i class="fa fa-cube fa-fw"></i> Participant Data</a>
+                            <a href="table-admin.php" class="active"><i class="fa fa-database fa-fw"></i> Participant Data</a>
                         </li>
                     </ul>
                 </div>
@@ -541,69 +541,62 @@ if (isset($_GET['logout'])) {
                             <!-- /.panel-heading -->
                             <div class="panel-body">
 
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>D+</th>
-                                        <th>D-</th>
-                                        <th>Vi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    include 'koneksi.php';
-                                    $datanama = array();
-                                    $no = 1;
-                                    $ids= array();
-                                    $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
-                                    $data = mysqli_query($conn, "select * from hasil 
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>D+</th>
+                                            <th>D-</th>
+                                            <th>Vi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        include 'koneksi.php';
+                                        $datanama = array();
+                                        $no = 1;
+                                        $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
+                                        $data = mysqli_query($conn, "select * from hasil 
                                     LEFT JOIN user ON hasil.user_id=user.user_id");
-                                    // perhitungan normalisasi
-                                    if (!$data) {
-                                        printf("Error: %s\n", mysqli_error($conn));
-                                    }
-                                    while ($d = mysqli_fetch_array($data)) {
-                                        array_push($datanama, $d['nama']);
-                                        array_push($ids, $d['user_id']);
-                                        
-                                    }
-                                    echo '<tr>';
-                                    for ($x = 0; $x < sizeof($c1); $x++) {
-                                        echo '<td>' . $datanama[$x] . '</td>';
-                                        $dxc1 = (max($datax1) - $datax1[$x]) * (max($datax1) - $datax1[$x]);
-                                        $dxc2 = (max($datax2) - $datax2[$x]) * (max($datax2) - $datax2[$x]);
-                                        $dxc3 = (max($datax3) - $datax3[$x]) * (max($datax3) - $datax3[$x]);
-                                        $dxc4 = (max($datax4) - $datax4[$x]) * (max($datax4) - $datax4[$x]);
-                                        $dxc5 = (max($datax5) - $datax5[$x]) * (max($datax5) - $datax5[$x]);
-                                        $dxc6 = (max($datax6) - $datax6[$x]) * (max($datax6) - $datax6[$x]);
-                                        $dxc7 = (max($datax7) - $datax7[$x]) * (max($datax7) - $datax7[$x]);
-                                        $dxc8 = (max($datax8) - $datax8[$x]) * (max($datax8) - $datax8[$x]);
-                                        $dxc9 = (max($datax9) - $datax9[$x]) * (max($datax9) - $datax9[$x]);
-                                        $rdplus = sqrt($dxc1 + $dxc2 + $dxc3 + $dxc4 + $dxc5 + $dxc6 + $dxc7 + $dxc8 + $dxc9);
-                                        echo '<td>' . round($rdplus, 4) . '</td>';
-                                        $dxc1m = ($datax1[$x] - min($datax1)) * ($datax1[$x] - min($datax1));
-                                        $dxc2m = ($datax2[$x] - min($datax2)) * ($datax2[$x] - min($datax2));
-                                        $dxc3m = ($datax3[$x] - min($datax3)) * ($datax3[$x] - min($datax3));
-                                        $dxc4m = ($datax4[$x] - min($datax4)) * ($datax4[$x] - min($datax4));
-                                        $dxc5m = ($datax5[$x] - min($datax5)) * ($datax5[$x] - min($datax5));
-                                        $dxc6m = ($datax6[$x] - min($datax6)) * ($datax6[$x] - min($datax6));
-                                        $dxc7m = ($datax7[$x] - min($datax7)) * ($datax7[$x] - min($datax7));
-                                        $dxc8m = ($datax8[$x] - min($datax8)) * ($datax8[$x] - min($datax8));
-                                        $dxc9m = ($datax9[$x] - min($datax9)) * ($datax9[$x] - min($datax9));
-                                        $rdmin = sqrt($dxc1m + $dxc2m + $dxc3m + $dxc4m + $dxc5m + $dxc6m + $dxc7m + $dxc8m + $dxc9m);
-                                        $vi = $rdmin / ($rdmin + $rdplus);
-                                        echo '<td>' . round($rdmin, 4) . '</td>';
-                                        echo '<td>' . $vi . '</td>';
-                                        echo '</tr>';
-                                        $stmt = $conn->prepare("UPDATE hasil SET vi = ? WHERE user_id =?");
-                                        $stmt->bind_param("si", $vi, $ids[$x]);
-                                        $stmt->execute();
-                                        $stmt->close(); 
-                                   }
-                                    ?>
-                                </tbody>
-                            </table>
+                                        // perhitungan normalisasi
+                                        if (!$data) {
+                                            printf("Error: %s\n", mysqli_error($conn));
+                                        }
+                                        while ($d = mysqli_fetch_array($data)) {
+                                            array_push($datanama, $d['nama']);
+                                        }
+                                        echo '<tr>';
+                                        for ($x = 0; $x < sizeof($c1); $x++) {
+                                            echo '<td>' . $datanama[$x] . '</td>';
+                                            $dxc1 = (max($datax1) - $datax1[$x]) * (max($datax1) - $datax1[$x]);
+                                            $dxc2 = (max($datax2) - $datax2[$x]) * (max($datax2) - $datax2[$x]);
+                                            $dxc3 = (max($datax3) - $datax3[$x]) * (max($datax3) - $datax3[$x]);
+                                            $dxc4 = (max($datax4) - $datax4[$x]) * (max($datax4) - $datax4[$x]);
+                                            $dxc5 = (max($datax5) - $datax5[$x]) * (max($datax5) - $datax5[$x]);
+                                            $dxc6 = (max($datax6) - $datax6[$x]) * (max($datax6) - $datax6[$x]);
+                                            $dxc7 = (max($datax7) - $datax7[$x]) * (max($datax7) - $datax7[$x]);
+                                            $dxc8 = (max($datax8) - $datax8[$x]) * (max($datax8) - $datax8[$x]);
+                                            $dxc9 = (max($datax9) - $datax9[$x]) * (max($datax9) - $datax9[$x]);
+                                            $rdplus = sqrt($dxc1 + $dxc2 + $dxc3 + $dxc4 + $dxc5 + $dxc6 + $dxc7 + $dxc8 + $dxc9);
+                                            echo '<td>' . round($rdplus, 4) . '</td>';
+                                            $dxc1m = ($datax1[$x] - min($datax1)) * ($datax1[$x] - min($datax1));
+                                            $dxc2m = ($datax2[$x] - min($datax2)) * ($datax2[$x] - min($datax2));
+                                            $dxc3m = ($datax3[$x] - min($datax3)) * ($datax3[$x] - min($datax3));
+                                            $dxc4m = ($datax4[$x] - min($datax4)) * ($datax4[$x] - min($datax4));
+                                            $dxc5m = ($datax5[$x] - min($datax5)) * ($datax5[$x] - min($datax5));
+                                            $dxc6m = ($datax6[$x] - min($datax6)) * ($datax6[$x] - min($datax6));
+                                            $dxc7m = ($datax7[$x] - min($datax7)) * ($datax7[$x] - min($datax7));
+                                            $dxc8m = ($datax8[$x] - min($datax8)) * ($datax8[$x] - min($datax8));
+                                            $dxc9m = ($datax9[$x] - min($datax9)) * ($datax9[$x] - min($datax9));
+                                            $rdmin = sqrt($dxc1m + $dxc2m + $dxc3m + $dxc4m + $dxc5m + $dxc6m + $dxc7m + $dxc8m + $dxc9m);
+                                            $vi = $rdmin / ($rdmin + $rdplus);
+                                            echo '<td>' . round($rdmin, 4) . '</td>';
+                                            echo '<td>' . $vi . '</td>';
+                                            echo '</tr>';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
 
                             </div>
                             <!-- /.panel-body -->
