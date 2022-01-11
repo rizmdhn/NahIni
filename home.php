@@ -164,5 +164,5 @@ if (isset($_GET['logout'])) {
   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:-120px; margin-top: 20px; font-size: 30px; width: 800px;"> VALUABLE ASSETS</p>
   <p style="font-family: 'Josefin Sans', sans-serif; text-align: center; margin-left:-195px; margin-top: 20px; font-size: 30px; width: 800px;"> FOR US!!</p>
   <a href="prequiz.php"> <button class="button button2" href="prequiz.php">Ikuti Test</button></a>
-  <a href=""> <button class="button button3">Lihat Hasil</button></a>
+  <a href="hasiltest.php"> <button class="button button3" >Lihat Hasil</button></a>
 </body>
