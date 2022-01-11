@@ -5,7 +5,14 @@ include 'koneksi.php';
 error_reporting(0);
 
 session_start();
-
+				$nama = null;
+				$email1 = null;
+				$password1 = null;;
+				$tanggal_lahir = null;
+				$no_telp = null;
+				$alamat = null;
+				$NIK = null;
+				echo $NIK;
 if (isset($_SESSION['nama'])) {
 	header("Location: home.php");
 }
@@ -14,16 +21,16 @@ if (isset($_POST['submitlogin'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
 
-	$sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+	$sql = "SELECT * FROM user WHERE  email='$email' AND password='$password' ";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['nama'] = $row['nama'];
 		$_SESSION['credential'] = $row['credential'];
+		$_SESSION['user_id'] = $row['user_id'];
 		header("Location: home.php");
 	} else {
 		echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
-		header("Location: home.php");
 	}
 }
 
@@ -56,8 +63,7 @@ if (isset($_POST['submitregis'])) {
 				$NIK = "";
 				$_POST['password'] = "";
 			} else {
-				echo  mysqli_error($conn);
-				echo "<script>alert('Terjadi Kesalahan')</script> ";
+				echo "<script>alert('Terjadi Kesalahan'". mysqli_error($conn) .")</script> ";
 				$nama = "";
 				$email1 = "";
 				$password1 = "";

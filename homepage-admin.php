@@ -22,6 +22,10 @@ function Logout()
 if (isset($_GET['logout'])) {
     Logout();
 }
+
+function terima()
+{
+}
 ?>
 
 <head>
@@ -48,6 +52,28 @@ if (isset($_GET['logout'])) {
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <?php
+    include 'koneksi.php';
+            $id= 0;
+    if (isset($_POST['terima'])) {
+        $id =  $_POST['userid'];
+        $string = 'DITERIMA';
+        $stmt = $conn->prepare("UPDATE hasil SET hasil = ? WHERE user_id =?");
+        $stmt->bind_param("si", $string, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    if (isset($_POST['tolak'])) {
+        $id =  $_POST['userid'];
+        $string = 'DITOLAK';
+        $stmt = $conn->prepare("UPDATE hasil SET hasil = ? WHERE user_id =?");
+        $stmt->bind_param("si", $string, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    ?>
+
+
 </head>
 
 <body>
@@ -133,8 +159,12 @@ if (isset($_GET['logout'])) {
                                                 <td><?php echo $d['Vi']; ?></td>
                                                 <td><?php echo $d['hasil']; ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-sm" onclick="">Terima</button>
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="">Tolak</button>
+                                                    <form method="post">
+                                                        <input type="number" name="userid" value="<?php echo $d['user_id']; ?>" hidden />
+                                                        <button class="btn btn-warning btn-sm" name="terima">Terima</button>
+                                                        <button class="btn btn-danger btn-sm" name="tolak">Tolak</button>
+
+                                                    </form>
                                                 </td>
                                             </tr>
                                     </tbody>

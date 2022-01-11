@@ -147,10 +147,10 @@ if (isset($_GET['logout'])) {
   <nav>
     <img src="img/Nah.png" alt="logo">
     <ul>
-      <li><?php echo "Selamat Datang, " . $_SESSION['nama'] . "!";  ?> </li>
+      <li><?php echo "Selamat Datang, " . $_SESSION['nama']  . "!";  ?> </li>
       <li><a href="home.php">Home</a></li>
       <li><a href="prequiz.php">Test</a></li>
-      <li><a href="">Hasil Test</a></li>
+      <li><a href="hasiltest.php">Hasil Test</a></li>
       <li><a href="home.php?logout=true">logout</a></li>
     </ul>
   </nav>
