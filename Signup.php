@@ -12,6 +12,7 @@ session_start();
 				$no_telp = null;
 				$alamat = null;
 				$NIK = null;
+
 				echo $NIK;
 if (isset($_SESSION['nama'])) {
 	header("Location: home.php");
@@ -25,11 +26,17 @@ if (isset($_POST['submitlogin'])) {
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
+		if($row['credential'] == 1){
+			$_SESSION['nama'] = $row['nama'];
+			$_SESSION['credential'] = $row['credential'];
+			$_SESSION['user_id'] = $row['user_id'];
+			header("Location: homepage-admin.php");
+		}else{
 		$_SESSION['nama'] = $row['nama'];
 		$_SESSION['credential'] = $row['credential'];
 		$_SESSION['user_id'] = $row['user_id'];
 		header("Location: home.php");
-	} else {
+	}} else {
 		echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
 	}
 }
