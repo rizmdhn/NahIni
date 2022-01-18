@@ -160,9 +160,14 @@ function terima()
                                                 <td><?php echo $d['hasil']; ?></td>
                                                 <td>
                                                     <form method="post">
+                                                    <?php if($d['hasil'] == "Waiting") : ?>
                                                         <input type="number" name="userid" value="<?php echo $d['user_id']; ?>" hidden />
                                                         <button class="btn btn-warning btn-sm" name="terima">Terima</button>
                                                         <button class="btn btn-danger btn-sm" name="tolak">Tolak</button>
+                                                    <?php else : ?>
+
+                                                    <?php endif; ?>
+                                                        
 
                                                     </form>
                                                 </td>
