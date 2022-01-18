@@ -262,15 +262,6 @@ if (isset($_GET['logout'])) {
                                             echo '<td>' . round($x8, 4) . '</td>';
                                             echo '<td>' . round($x9, 4) . '</td>';
                                             echo '</tr>';
-                                            $x1 = 0;
-                                            $x2 = 0;
-                                            $x3 = 0;
-                                            $x4 = 0;
-                                            $x5 = 0;
-                                            $x6 = 0;
-                                            $x7 = 0;
-                                            $x8 = 0;
-                                            $x9 = 0;
                                         }
                                         ?>
                                     </tbody>
@@ -308,44 +299,9 @@ if (isset($_GET['logout'])) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        include 'koneksi.php';
-                                        $c1 = array();
-                                        $c2 = array();
-                                        $c3 = array();
-                                        $c4 = array();
-                                        $c5 = array();
-                                        $c6 = array();
-                                        $c7 = array();
-                                        $c8 = array();
-                                        $c9 = array();
-                                        $datas = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
-                                        if (!$datas) {
-                                            printf("Error: %s\n", mysqli_error($conn));
-                                        }
-                                        while ($d = mysqli_fetch_array($datas)) {
-                                            $data = json_decode($d['array_jawaban']);
-                                            array_push($c1, $data[0]);
-                                            array_push($c2, $data[1]);
-                                            array_push($c3, $data[2]);
-                                            array_push($c4, $data[3]);
-                                            array_push($c5, $data[4]);
-                                            array_push($c6, $data[5]);
-                                            array_push($c7, $data[6]);
-                                            array_push($c8, $data[7]);
-                                            array_push($c9, $data[8]);
-                                        }
+
                                         // perhitungan normalisasi
                                         echo '<tr>';
-                                        $hasil1 = 0;
-                                        $hasil2 = 0;
-                                        $hasil3 = 0;
-                                        $hasil4 = 0;
-                                        $hasil5 = 0;
-                                        $hasil6 = 0;
-                                        $hasil7 = 0;
-                                        $hasil8 = 0;
-                                        $hasil9 = 0;
                                         $datax1 = array();
                                         $datax2 = array();
                                         $datax3 = array();
@@ -355,35 +311,9 @@ if (isset($_GET['logout'])) {
                                         $datax7 = array();
                                         $datax8 = array();
                                         $datax9 = array();
-                                        foreach ($c1 as $num) {
-                                            $hasil1 += $num * $num;
-                                        }
-                                        foreach ($c2 as $num) {
-                                            $hasil2 += $num * $num;
-                                        }
-                                        foreach ($c3 as $num) {
-                                            $hasil3 += $num * $num;
-                                        }
-                                        foreach ($c4 as $num) {
-                                            $hasil4 += $num * $num;
-                                        }
-                                        foreach ($c5 as $num) {
-                                            $hasil5 += $num * $num;
-                                        }
-                                        foreach ($c6 as $num) {
-                                            $hasil6 += $num * $num;
-                                        }
-                                        foreach ($c7 as $num) {
-                                            $hasil7 += $num * $num;
-                                        }
-                                        foreach ($c8 as $num) {
-                                            $hasil8 += $num * $num;
-                                        }
-                                        foreach ($c9 as $num) {
-                                            $hasil9 += $num * $num;
-                                        }
+          
                                         for ($x = 0; $x < sizeof($c1); $x++) {
-
+                                            
                                             $x1 = $c1[$x] / sqrt($hasil1);
                                             $x2 = $c2[$x] / sqrt($hasil2);
                                             $x3 = $c3[$x] / sqrt($hasil3);
@@ -406,7 +336,7 @@ if (isset($_GET['logout'])) {
                                             array_push($datax2, $xb2);
                                             array_push($datax3, $xb3);
                                             array_push($datax4, $xb4);
-                                            array_push($datax5, $xb5);
+                                            array_push($datax5, $xb5); 
                                             array_push($datax6, $xb6);
                                             array_push($datax7, $xb7);
                                             array_push($datax8, $xb8);
@@ -461,33 +391,6 @@ if (isset($_GET['logout'])) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        include 'koneksi.php';
-                                        $c1 = array();
-                                        $c2 = array();
-                                        $c3 = array();
-                                        $c4 = array();
-                                        $c5 = array();
-                                        $c6 = array();
-                                        $c7 = array();
-                                        $c8 = array();
-                                        $c9 = array();
-                                        $datas = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
-                                        if (!$datas) {
-                                            printf("Error: %s\n", mysqli_error($conn));
-                                        }
-                                        while ($d = mysqli_fetch_array($datas)) {
-                                            $data = json_decode($d['array_jawaban']);
-                                            array_push($c1, $data[0]);
-                                            array_push($c2, $data[1]);
-                                            array_push($c3, $data[2]);
-                                            array_push($c4, $data[3]);
-                                            array_push($c5, $data[4]);
-                                            array_push($c6, $data[5]);
-                                            array_push($c7, $data[6]);
-                                            array_push($c8, $data[7]);
-                                            array_push($c9, $data[8]);
-                                        }
                                         // perhitungan normalisasi
                                         echo '<tr>';
                                         echo '<td>' . round(max($datax1), 4) . '</td>';
@@ -511,16 +414,6 @@ if (isset($_GET['logout'])) {
                                         echo '<td>' . round(min($datax8), 4) . '</td>';
                                         echo '<td>' . round(min($datax9), 4) . '</td>';
                                         echo '</tr>';
-
-                                        $xb1 = 0;
-                                        $xb2 = 0;
-                                        $xb3 = 0;
-                                        $xb4 = 0;
-                                        $xb5 = 0;
-                                        $xb6 = 0;
-                                        $xb7 = 0;
-                                        $xb8 = 0;
-                                        $xb9 = 0;
 
                                         ?>
                                     </tbody>
@@ -555,7 +448,7 @@ if (isset($_GET['logout'])) {
                                         include 'koneksi.php';
                                         $datanama = array();
                                         $no = 1;
-                                        $ids= array();
+                                        $ids = array();
                                         $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
                                         $data = mysqli_query($conn, "select * from hasil 
                                     LEFT JOIN user ON hasil.user_id=user.user_id");
@@ -597,16 +490,16 @@ if (isset($_GET['logout'])) {
                                             echo '</tr>';
                                             $stmt = $conn->prepare("UPDATE hasil SET Vi = ? WHERE user_id = ?");
                                             $stmt->bind_param("si", $vi, $ids[$x]);
-                                            if($stmt->execute()){
-                                                $stmt->close(); 
-                                            }else{
-                                               echo $stmt->error;
-                                             }
+                                            if ($stmt->execute()) {
+                                                $stmt->close();
+                                            } else {
+                                                echo $stmt->error;
                                             }
+                                        }
                                         ?>
                                     </tbody>
                                 </table>
-                            
+
                             </div>
                             <!-- /.panel-body -->
                         </div>
