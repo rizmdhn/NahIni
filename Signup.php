@@ -5,15 +5,14 @@ include 'koneksi.php';
 error_reporting(0);
 
 session_start();
-				$nama = null;
-				$email1 = null;
-				$password1 = null;;
-				$tanggal_lahir = null;
-				$no_telp = null;
-				$alamat = null;
-				$NIK = null;
+$nama = null;
+$email1 = null;
+$password1 = null;
+$tanggal_lahir = null;
+$no_telp = null;
+$alamat = null;
+$NIK = null;
 
-				echo $NIK;
 if (isset($_SESSION['nama'])) {
 	header("Location: home.php");
 }
@@ -26,17 +25,18 @@ if (isset($_POST['submitlogin'])) {
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
-		if($row['credential'] == 1){
+		if ($row['credential'] == 1) {
 			$_SESSION['nama'] = $row['nama'];
 			$_SESSION['credential'] = $row['credential'];
 			$_SESSION['user_id'] = $row['user_id'];
 			header("Location: homepage-admin.php");
-		}else{
-		$_SESSION['nama'] = $row['nama'];
-		$_SESSION['credential'] = $row['credential'];
-		$_SESSION['user_id'] = $row['user_id'];
-		header("Location: home.php");
-	}} else {
+		} else {
+			$_SESSION['nama'] = $row['nama'];
+			$_SESSION['credential'] = $row['credential'];
+			$_SESSION['user_id'] = $row['user_id'];
+			header("Location: home.php");
+		}
+	} else {
 		echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
 	}
 }
@@ -56,51 +56,21 @@ if (isset($_POST['submitregis'])) {
 		$sql = "SELECT * FROM user WHERE NIK = '$NIK'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO user (email, password ,nama , tanggal_lahir, no_telp, alamat, NIK)
+			$sql = "INSERT INTO user (email, password,nama , tanggal_lahir, no_telp, alamat, NIK)
                     VALUES ( '$email1', '$password1','$nama', '$tanggal_lahir', '$no_telp','$alamat','$NIK')";
 			$result = mysqli_query($conn, $sql);
-			if ($result) {
-				echo "<script>alert('Selamat, registrasi berhasil!')</script>";
-				$nama = "";
-				$email1 = "";
-				$password1 = "";
-				$tanggal_lahir = "";
-				$no_telp = "";
-				$alamat = "";
-				$NIK = "";
-				$_POST['password'] = "";
+			if (!$result) {
+				echo "<script>alert('Terjadi Kesalahan'" . mysqli_error($conn) . ")</script> ";
 			} else {
-				echo "<script>alert('Terjadi Kesalahan'". mysqli_error($conn) .")</script> ";
-				$nama = "";
-				$email1 = "";
-				$password1 = "";
-				$tanggal_lahir = "";
-				$no_telp = "";
-				$alamat = "";
-				$NIK = "";
-				$_POST['password'] = "";
+				echo "<script>alert('Selamat, registrasi berhasil!')</script>";
 			}
 		} else {
 			echo "<script>alert('NIK Sudah Terdaftar.')</script>";
-			$nama = "";
-			$email1 = "";
-			$password1 = "";
-			$tanggal_lahir = "";
-			$no_telp = "";
-			$alamat = "";
-			$NIK = "";
-			$_POST['password'] = "";
+
 		}
 	} else {
 		echo "<script>alert('Email Sudah Terdaftar.')</script>";
-		$nama = "";
-		$email1 = "";
-		$password1 = "";
-		$tanggal_lahir = "";
-		$no_telp = "";
-		$alamat = "";
-		$NIK = "";
-		$_POST['password'] = "";
+
 	}
 }
 
@@ -110,7 +80,7 @@ if (isset($_POST['submitregis'])) {
 <html>
 
 <head>
-	<title>Slide Navbar</title>
+	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="slide navbar css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 	<style type="text/css">
@@ -379,13 +349,13 @@ if (isset($_POST['submitregis'])) {
 				<h1>Create Account</h1>
 
 
-				<input type="text" name="nama" placeholder="Name" />
-				<input type="number" name="NIK" placeholder="NIK" />
-				<input type="date" name="tanggal_lahir" placeholder="Birth Date" />
-				<input type="text" name="alamat" placeholder="Address" />
-				<input type="number" name="no_telp" placeholder="Phone" />
-				<input type="email" name="email1" placeholder="Email" />
-				<input type="password" name="password1" placeholder="Password" />
+				<input type="text" name="nama" placeholder="Name" required/>
+				<input type="number" name="NIK" placeholder="NIK" required/>
+				<input type="date" name="tanggal_lahir" placeholder="Birth Date" required/>
+				<input type="text" name="alamat" placeholder="Address" required/>
+				<input type="number" name="no_telp" placeholder="Phone" required/>
+				<input type="email" name="email1" placeholder="Email" required />
+				<input type="password" name="password1" placeholder="Password" required/>
 				<button name="submitregis">Sign Up</button>
 			</form>
 		</div>
