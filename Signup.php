@@ -12,6 +12,8 @@ $tanggal_lahir = null;
 $no_telp = null;
 $alamat = null;
 $NIK = null;
+$email = null;
+$password = null;
 
 if (isset($_SESSION['nama'])) {
 	header("Location: home.php");

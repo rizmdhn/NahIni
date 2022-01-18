@@ -555,6 +555,7 @@ if (isset($_GET['logout'])) {
                                         include 'koneksi.php';
                                         $datanama = array();
                                         $no = 1;
+                                        $ids= array();
                                         $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
                                         $data = mysqli_query($conn, "select * from hasil 
                                     LEFT JOIN user ON hasil.user_id=user.user_id");
@@ -564,6 +565,7 @@ if (isset($_GET['logout'])) {
                                         }
                                         while ($d = mysqli_fetch_array($data)) {
                                             array_push($datanama, $d['nama']);
+                                            array_push($ids, $d['user_id']);
                                         }
                                         echo '<tr>';
                                         for ($x = 0; $x < sizeof($c1); $x++) {
@@ -593,11 +595,18 @@ if (isset($_GET['logout'])) {
                                             echo '<td>' . round($rdmin, 4) . '</td>';
                                             echo '<td>' . $vi . '</td>';
                                             echo '</tr>';
-                                        }
+                                            $stmt = $conn->prepare("UPDATE hasil SET Vi = ? WHERE user_id = ?");
+                                            $stmt->bind_param("si", $vi, $ids[$x]);
+                                            if($stmt->execute()){
+                                                $stmt->close(); 
+                                            }else{
+                                               echo $stmt->error;
+                                             }
+                                            }
                                         ?>
                                     </tbody>
                                 </table>
-
+                            
                             </div>
                             <!-- /.panel-body -->
                         </div>

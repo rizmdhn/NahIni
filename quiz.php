@@ -64,17 +64,9 @@
 
 session_start();
 include 'koneksi.php';
-$nama = $_SESSION['nama'];
-
-
+$ids = $_SESSION['user_id'];
 if (!isset($_SESSION['nama'])) {
 } else {
-
-  $sql = "SELECT user_id from user where nama= '$nama'";
-  $result = mysqli_query($conn, $sql);
-  while ($id = mysqli_fetch_array($result)) {
-    $ids = $id['user_id'];
-  }
   $sql = "SELECT * from hasil where user_id= '$ids'";
   $result = mysqli_query($conn, $sql);
   if (!$result->num_rows > 0) {

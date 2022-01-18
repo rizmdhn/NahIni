@@ -147,9 +147,12 @@ $sql = "SELECT * FROM hasil WHERE user_id =  $id";
          echo '</body>';};
       
 	} else {
-		echo "<script>alert('anda belum melakukan test')</script>";
-      header("location : home.php");
-	}
+		echo "<script>alert('anda belum melakukan test". $id ."')
+      window.location.href='home.php';
+      </script>";
+
+
+   }
 
 
 
