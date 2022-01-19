@@ -145,7 +145,7 @@ function terima()
                                         $no = 1;
                                         $sql = "Select hasil.hasilid, hasil.userid, hasil.hasil,hasil.array_jawaban,hasil.vi, user.nama from hasil LEFT JOIN user ON hasil.user_id = user.user_id";
                                         $data = mysqli_query($conn, "select * from hasil 
-                                    LEFT JOIN user ON hasil.user_id=user.user_id");
+                                    LEFT JOIN user ON hasil.user_id=user.user_id ORDER BY Vi DESC;");
                                         if (!$data) {
                                             printf("Error: %s\n", mysqli_error($conn));
                                         }

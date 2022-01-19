@@ -4,9 +4,7 @@
 
 session_start();
 
-if (!isset($_SESSION['nama'])) {
-    header("Location: login.php");
-}
+
 if (!$_SESSION['credential'] == 1) {
     echo $_SESSION['credential'];
     header("Location: home.php");
@@ -20,6 +18,7 @@ function Logout()
     session_destroy();
     header("Location: Signup.php");
 }
+
 if (isset($_GET['logout'])) {
     Logout();
 }
